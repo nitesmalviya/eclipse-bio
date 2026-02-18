@@ -42,7 +42,7 @@ const Login = () => {
 
     const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        debugger
+
         if (validator.allValid()) {
             setLoading(true);
             const res = await dispatch(

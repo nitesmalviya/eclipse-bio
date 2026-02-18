@@ -6,6 +6,7 @@ import { signup } from "@/src/store/actions/auth-action";
 import brandLogo from "../../../public/assets/images/app-logo.png"
 import { useAppDispatch } from "../../store/hooks";
 import { toast } from "sonner";
+import { SignupInput } from "@/src/types/auth-type";
 
 
 type Props = {

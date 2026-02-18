@@ -6,12 +6,12 @@ const EcompassHomePage = async () => {
     // for feature data sets
     const res = await getFeaturedDatasetsAction({ variables: { limit: DASHBOARD_ITEMS_LIMIT } });
     const featureDataSets = res?.getFeaturedDatasets;
-    const projectsRes = await getAllProjectsAction({});
-    const projectsData = projectsRes?.projects; 
-    
+    const projectsRes = await getAllProjectsAction({ variables: { filter: {} } });
+    const projectsData = projectsRes?.projects;
+
     return (
-        <EcompassHome 
-            featureDataSets={featureDataSets} projectsData={projectsData}/>
+        <EcompassHome
+            featureDataSets={featureDataSets} projectsData={projectsData} />
     )
 }
 

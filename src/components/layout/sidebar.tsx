@@ -56,7 +56,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         {/* Logo */}
         <div className="py-[48px]">
           <img
-            src="assets/images/app-logo.png"
+            src="assets/images/eclipse-bio-logo.png"
             alt="EclipseBio"
             className="h-[34px] w-auto"
           />

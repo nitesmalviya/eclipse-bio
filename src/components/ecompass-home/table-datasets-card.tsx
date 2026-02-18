@@ -4,16 +4,15 @@ interface AssayType {
     name: string;
 }
 
-interface ProjectType {
+
+export interface DatasetType {
     id: string;
     name: string;
     assay_type: string;
-    active_status: boolean;
-    assays: AssayType[];
 }
 
 interface TableCardProps {
-    datasetsList: ProjectType[];
+    datasetsList: DatasetType[];
 }
 
 const TableDataSetsCard = ({ datasetsList }: TableCardProps) => {

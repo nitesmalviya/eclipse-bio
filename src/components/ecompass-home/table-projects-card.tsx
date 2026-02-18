@@ -1,18 +1,8 @@
 import React from "react";
-
-interface AssayType {
-    name: string;
-}
-
-interface ProjectType {
-    id: string;
-    name: string;
-    active_status: boolean;
-    assays?: AssayType[];
-}
+import type { Project } from "@/src/types/project";
 
 interface TableCardProps {
-    projectsList: ProjectType[];
+    projectsList: Project[];
 }
 
 const TableProjectsCard = ({ projectsList }: TableCardProps) => {

@@ -4,26 +4,20 @@ import { formatDateUTC } from "@/src/utils/common-service";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
-interface ComparisonsType {
-  id: string;
-  title: string;
-  assay_type: string;
-  projects_count: string;
-  comparison_start_date: string;
-  comparison_end_date: string;
-}
+import type { Comparisons } from "@/src/types/comparison-list";
 
 interface ComparisonTableProps {
-  comparisons: ComparisonsType[];
+  comparisons: Comparisons[] | null;
+  activeTab?: number;
+  onRowClick?: (id: string) => void;
 }
 
-const ComparisonTable = ({ comparisons }: ComparisonTableProps) => {
-  const [sortConfig, setSortConfig] = React.useState<{ key: keyof ComparisonsType, direction: 'asc' | 'desc' } | null>(null);
-  const [sortedComparisons, setSortedComparisons] = useState<ComparisonsType[]>(comparisons);
+const ComparisonTable = ({ comparisons, onRowClick }: ComparisonTableProps) => {
+  const [sortConfig, setSortConfig] = React.useState<{ key: keyof Comparisons, direction: 'asc' | 'desc' } | null>(null);
+  const [sortedComparisons, setSortedComparisons] = useState<Comparisons[]>(comparisons ?? []);
 
-  console.log(comparisons, "comparisons list")
   useEffect(() => {
-    let sortableComparisons = [...comparisons];
+    let sortableComparisons = [...(comparisons ?? [])];
     if (sortConfig !== null) {
       sortableComparisons.sort((a, b) => {
         let aValue = a[sortConfig.key];
@@ -44,7 +38,7 @@ const ComparisonTable = ({ comparisons }: ComparisonTableProps) => {
     setSortedComparisons(sortableComparisons);
   }, [comparisons, sortConfig]);
 
-  const handleSorting = (key: keyof ProjectType) => {
+  const handleSorting = (key: keyof Comparisons) => {
     let direction: 'asc' | 'desc' = 'asc';
     if (sortConfig?.key === key && sortConfig?.direction === 'asc') {
       direction = 'desc';
@@ -140,7 +134,6 @@ const ComparisonTable = ({ comparisons }: ComparisonTableProps) => {
             </div>
             <div className="text-sm text-gray-900">
               {comparisonItem.projects_count ?? "--"}
-
             </div>
             <div className="text-sm text-gray-900 font-titillium">
               {comparisonItem?.comparison_start_date
@@ -153,7 +146,14 @@ const ComparisonTable = ({ comparisons }: ComparisonTableProps) => {
                 : "--"}
             </div>
             <div className="flex items-center justify-center">
-              <div className="w-10 h-10 rounded-full border border-teal-500 flex items-center justify-center hover:bg-teal-50 transition-colors">
+              <button
+                className="w-10 h-10 rounded-full border border-teal-500 flex items-center justify-center hover:bg-teal-50 transition-colors"
+                onClick={() => {
+                  if (typeof onRowClick === 'function') onRowClick(comparisonItem.id);
+                }}
+                aria-label="Go to comparison"
+                type="button"
+              >
                 <Image
                   src="/assets/svgs/send.svg"
                   alt="Go"
@@ -164,7 +164,7 @@ const ComparisonTable = ({ comparisons }: ComparisonTableProps) => {
                       "invert(52%) sepia(89%) saturate(464%) hue-rotate(131deg) brightness(91%) contrast(101%)",
                   }}
                 />
-              </div>
+              </button>
             </div>
           </div>
         ))}

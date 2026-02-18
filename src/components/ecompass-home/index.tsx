@@ -6,15 +6,32 @@ import TableCard from "./table-projects-card";
 import TableDataSetsCard from "./table-datasets-card";
 
 export interface DatasetType {
+    assay_type: string;
     id: string;
     name: string;
-    assay_type: string;
 }
 
 export interface ProjectType {
     id: string;
     name: string;
-    assay_type: string;
+    slug?: string;
+    description?: string | null;
+    status?: string;
+    start_date?: string | null;
+    target_end_date?: string | null;
+    actual_end_date?: string | null;
+    identifier?: string;
+    progress_percentage?: number;
+    settings?: Record<string, any> | null;
+    tags?: string[] | null;
+    is_public?: boolean;
+    is_featured?: boolean;
+    active_status?: string;
+    created_at?: string;
+    updated_at?: string;
+    deleted_at?: string | null;
+    assay_type?: string;
+
 }
 
 
@@ -37,7 +54,7 @@ interface Props {
 const EcompassHome = ({ featureDataSets, projectsData }: Props) => {
     const datasetsList = featureDataSets?.datasets ?? [];
     const projectsList = projectsData?.data ?? [];
-    console.log(projectsData, "datasetsList datasetsList datasetsList")
+
 
     return (
         <div className="min-h-screen bg-white">
@@ -45,11 +62,11 @@ const EcompassHome = ({ featureDataSets, projectsData }: Props) => {
             <HeroSection />
             <div className="space-y-[60px] px-6 md:px-[70px] py-10 md:py-[60px]">
                 <div className="w-full lg:min-h-[600px] rounded-3xl bg-white shadow-[0_4px_20px_0_rgba(84,110,116,0.12)] p-6 md:p-10 flex flex-col lg:flex-row gap-10">
-                    <StatsCard projectsData={projectsData}/>
+                    <StatsCard projectsData={projectsData} />
                     <TableCard projectsList={projectsList} />
                 </div>
                 <div className="w-full lg:min-h-[600px] rounded-3xl bg-white shadow-[0_4px_20px_0_rgba(84,110,116,0.12)] p-6 md:p-10 flex flex-col lg:flex-row gap-10">
-                    <StatsCard projectsData={projectsData}/>
+                    <StatsCard projectsData={projectsData} />
                     <TableDataSetsCard datasetsList={datasetsList} />
                 </div>
             </div>

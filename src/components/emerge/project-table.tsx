@@ -1,28 +1,17 @@
 
 "use client";
-import React from "react";
 
-interface ProjectType {
-  id: string;
-  owner: {
-    display_name: string;
-  };
-  name: string;
-  identifier: string;
-  start_date: string;
-  target_end_date: string;
-  active_status: string;
-  status: string;
-  progress_percentage: number;
-}
+import React from "react";
+import type { Project } from "@/src/types/project";
 
 interface ProjectTableProps {
-  projectsList: ProjectType[];
+  projectsList: Project[];
+  activeTab?: number;
 }
 
 const ProjectTable = ({ projectsList }: ProjectTableProps) => {
-  const [sortConfig, setSortConfig] = React.useState<{ key: keyof ProjectType, direction: 'asc' | 'desc' } | null>(null);
-  const [sortedProjects, setSortedProjects] = React.useState<ProjectType[]>(projectsList);
+  const [sortConfig, setSortConfig] = React.useState<{ key: keyof Project, direction: 'asc' | 'desc' } | null>(null);
+  const [sortedProjects, setSortedProjects] = React.useState<Project[]>(projectsList);
 
   React.useEffect(() => {
     let sortableProjects = [...projectsList];
@@ -46,7 +35,7 @@ const ProjectTable = ({ projectsList }: ProjectTableProps) => {
     setSortedProjects(sortableProjects);
   }, [projectsList, sortConfig]);
 
-  const handleSorting = (key: keyof ProjectType) => {
+  const handleSorting = (key: keyof Project) => {
     let direction: 'asc' | 'desc' = 'asc';
     if (sortConfig?.key === key && sortConfig?.direction === 'asc') {
       direction = 'desc';
