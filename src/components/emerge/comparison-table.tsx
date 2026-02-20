@@ -50,127 +50,181 @@ const ComparisonTable = ({ comparisons, onRowClick }: ComparisonTableProps) => {
 
   return (
     <div className="w-full bg-white overflow-x-auto">
-      <div className="min-w-[800px]">
+      <table className="w-full border-collapse">
 
         {/* Header */}
-        <div className="grid grid-cols-[2fr_1.5fr_0.8fr_1.2fr_1.2fr_auto] gap-4 px-6 py-4 border-b border-gray-200">
-
-          <button
-            className="text-sm font-semibold text-gray-500 uppercase cursor-pointer flex items-center bg-transparent border-none p-0 focus:outline-none"
-            type="button"
-            onClick={() => handleSorting('title')}
-            onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') handleSorting('title'); }}
-            tabIndex={0}
-            aria-label="Sort by Owner"
-          >
-            Title
-            {sortConfig?.key === 'title' && (
-              <span className="ml-2">{sortConfig.direction === 'asc' ? '▲' : '▼'}</span>
-            )}
-          </button>
-          <button
-            className="text-sm font-semibold text-gray-500 uppercase cursor-pointer flex items-center bg-transparent border-none p-0 focus:outline-none"
-            type="button"
-            onClick={() => handleSorting('assay_type')}
-            onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') handleSorting('assay_type'); }}
-            tabIndex={0}
-            aria-label="Sort by assay_type"
-          >
-            Assay
-            {sortConfig?.key === 'assay_type' && (
-              <span className="ml-2">{sortConfig.direction === 'asc' ? '▲' : '▼'}</span>
-            )}
-          </button>
-          <button
-            className="text-sm font-semibold text-gray-500 uppercase cursor-pointer flex items-center bg-transparent border-none p-0 focus:outline-none"
-            type="button"
-            onClick={() => handleSorting('projects_count')}
-            onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') handleSorting('projects_count'); }}
-            tabIndex={0}
-            aria-label="Sort by assay_type"
-          >
-            Projects
-            {sortConfig?.key === 'projects_count' && (
-              <span className="ml-2">{sortConfig.direction === 'asc' ? '▲' : '▼'}</span>
-            )}
-          </button>
-          <button
-            className="text-sm font-semibold text-gray-500 uppercase cursor-pointer flex items-center bg-transparent border-none p-0 focus:outline-none"
-            type="button"
-            onClick={() => handleSorting('comparison_start_date')}
-            onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') handleSorting('comparison_start_date'); }}
-            tabIndex={0}
-            aria-label="Sort by assay_type"
-          >
-            Comparison start
-            {sortConfig?.key === 'comparison_start_date' && (
-              <span className="ml-2">{sortConfig.direction === 'asc' ? '▲' : '▼'}</span>
-            )}
-          </button>
-          <button
-            className="text-sm font-semibold text-gray-500 uppercase cursor-pointer flex items-center bg-transparent border-none p-0 focus:outline-none"
-            type="button"
-            onClick={() => handleSorting('comparison_end_date')}
-            onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') handleSorting('comparison_end_date'); }}
-            tabIndex={0}
-            aria-label="Sort by assay_type"
-          >
-            Comparison end
-            {sortConfig?.key === 'comparison_end_date' && (
-              <span className="ml-2">{sortConfig.direction === 'asc' ? '▲' : '▼'}</span>
-            )}
-          </button>
-          <div className="w-10"></div>
-        </div>
-
-        {sortedComparisons.map((comparisonItem) => (
-          <div
-            key={comparisonItem.id}
-            className="w-full text-left grid grid-cols-[2fr_1.5fr_0.8fr_1.2fr_1.2fr_auto] gap-4 px-6 py-6 border-b border-gray-100 hover:bg-gray-50 transition-colors"
-          >
-            <div className="text-sm text-gray-900 font-semibold">
-              {comparisonItem.title ?? "--"}
-            </div>
-            <div className="text-sm text-gray-900">
-              {comparisonItem.assay_type ?? "--"}
-            </div>
-            <div className="text-sm text-gray-900">
-              {comparisonItem.projects_count ?? "--"}
-            </div>
-            <div className="text-sm text-gray-900 font-titillium">
-              {comparisonItem?.comparison_start_date
-                ? formatDateUTC(comparisonItem?.comparison_start_date, "DD/MM/YYYY")
-                : "--"}
-            </div>
-            <div className="text-sm text-gray-900 font-titillium">
-              {comparisonItem?.comparison_end_date
-                ? formatDateUTC(comparisonItem?.comparison_end_date, "DD/MM/YYYY")
-                : "--"}
-            </div>
-            <div className="flex items-center justify-center">
+        <thead>
+          <tr className="bg-[#F7F9FB] border-b border-gray-200">
+            <th className="px-6 py-4 text-center">
               <button
-                className="w-10 h-10 rounded-full border border-teal-500 flex items-center justify-center hover:bg-teal-50 transition-colors"
-                onClick={() => {
-                  if (typeof onRowClick === 'function') onRowClick(comparisonItem.id);
-                }}
-                aria-label="Go to comparison"
+                className="flex items-center gap-1.5 cursor-pointer group bg-transparent border-0 p-0 justify-center mx-auto"
                 type="button"
+                onClick={() => handleSorting('title')}
+                onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') handleSorting('title'); }}
+                tabIndex={0}
+                aria-label="Sort by Owner"
               >
-                <Image
-                  src="/assets/svgs/send.svg"
-                  alt="Go"
-                  width={16}
-                  height={16}
-                  style={{
-                    filter:
-                      "invert(52%) sepia(89%) saturate(464%) hue-rotate(131deg) brightness(91%) contrast(101%)",
-                  }}
-                />
+                <span className="text-sm font-semibold text-gray-600 font-titillium uppercase tracking-wider transition-colors group-hover:text-[#166470]">
+                  Title
+                </span>
+
+                {sortConfig?.key === 'title' && (
+                  <span className="ml-2">{sortConfig.direction === 'asc' ? '▲' : '▼'}</span>
+                )}
               </button>
-            </div>
-          </div>
-        ))}
-      </div>
+            </th>
+            <th className="px-6 py-4 text-center">
+              <button
+                className="flex items-center gap-1.5 cursor-pointer group bg-transparent border-0 p-0 justify-center mx-auto"
+                type="button"
+                onClick={() => handleSorting('assay_type')}
+                onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') handleSorting('assay_type'); }}
+                tabIndex={0}
+                aria-label="Sort by assay_type"
+              >
+
+                <span className="text-sm font-semibold text-gray-600 font-titillium uppercase tracking-wider transition-colors group-hover:text-[#166470]">
+                  Assay
+                </span>
+                {sortConfig?.key === 'assay_type' && (
+                  <span className="ml-2">{sortConfig.direction === 'asc' ? '▲' : '▼'}</span>
+                )}
+              </button>
+            </th>
+            <th className="px-6 py-4 text-center">
+              <button
+                className="flex items-center gap-1.5 cursor-pointer group bg-transparent border-0 p-0 justify-center mx-auto"
+                type="button"
+                onClick={() => handleSorting('projects_count')}
+                onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') handleSorting('projects_count'); }}
+                tabIndex={0}
+                aria-label="Sort by assay_type"
+              >
+
+                <span className="text-sm font-semibold text-gray-600 font-titillium uppercase tracking-wider transition-colors group-hover:text-[#166470]">
+                  Projects
+                </span>
+                {sortConfig?.key === 'projects_count' && (
+                  <span className="ml-2">{sortConfig.direction === 'asc' ? '▲' : '▼'}</span>
+                )}
+              </button>
+            </th>
+            <th className="px-6 py-4 text-center">
+              <button
+                className="flex items-center gap-1.5 cursor-pointer group bg-transparent border-0 p-0 justify-center mx-auto"
+                type="button"
+                onClick={() => handleSorting('comparison_start_date')}
+                onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') handleSorting('comparison_start_date'); }}
+                tabIndex={0}
+                aria-label="Sort by assay_type"
+              >
+                <span className="text-sm font-semibold text-gray-600 font-titillium uppercase tracking-wider transition-colors group-hover:text-[#166470]">
+                  Comparison start
+                </span>
+
+                {sortConfig?.key === 'comparison_start_date' && (
+                  <span className="ml-2">{sortConfig.direction === 'asc' ? '▲' : '▼'}</span>
+                )}
+              </button>
+            </th>
+            <th className="px-6 py-4 text-center">
+              <button
+                className="flex items-center gap-1.5 cursor-pointer group bg-transparent border-0 p-0 justify-center mx-auto"
+                type="button"
+                onClick={() => handleSorting('comparison_end_date')}
+                onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') handleSorting('comparison_end_date'); }}
+                tabIndex={0}
+                aria-label="Sort by assay_type"
+              >
+
+                <span className="text-sm font-semibold text-gray-600 font-titillium uppercase tracking-wider transition-colors group-hover:text-[#166470]">
+                  Comparison end
+                </span>
+                {sortConfig?.key === 'comparison_end_date' && (
+                  <span className="ml-2">{sortConfig.direction === 'asc' ? '▲' : '▼'}</span>
+                )}
+              </button>
+            </th>
+            <th className="w-10 px-6 py-4 text-center"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {sortedComparisons.length === 0 ? (
+            <tr>
+              <td colSpan={6} className="text-center py-10 text-gray-500">
+                No comparisons found.
+              </td>
+            </tr>
+          ) : (
+            sortedComparisons.map((comparisonItem) => (
+              <tr
+                key={comparisonItem.id}
+                className="table-row border-b border-gray-100 last:border-b-0 hover:bg-gray-50 transition-colors"
+              >
+                <td className="px-6 py-6 text-center align-middle">
+                  <div className="text-sm text-gray-900 truncate font-titillium font-semibold max-w-[200px] mx-auto">
+                    {comparisonItem.title ?? "--"}
+                  </div>
+                </td>
+
+                <td className="px-6 py-6 text-center align-middle">
+                  <div className="text-sm text-gray-900 truncate font-titillium font-semibold max-w-[200px] mx-auto">
+                    {comparisonItem.assay_type ?? "--"}
+                  </div>
+                </td>
+
+                <td className="px-6 py-6 text-center align-middle">
+                  <div className="text-sm text-gray-900 truncate font-titillium font-semibold max-w-[200px] mx-auto">
+                    {comparisonItem.projects_count ?? "--"}
+                  </div>
+                </td>
+
+                <td className="px-6 py-6 text-center align-middle">
+                  <div className="text-sm text-gray-900 truncate font-titillium font-semibold max-w-[200px] mx-auto">
+                    {comparisonItem?.comparison_start_date
+                      ? formatDateUTC(comparisonItem.comparison_start_date, "DD/MM/YYYY")
+                      : "--"}
+                  </div>
+                </td>
+
+                <td className="px-6 py-6 text-center align-middle">
+                  <div className="text-sm text-gray-900 truncate font-titillium font-semibold max-w-[200px] mx-auto">
+                    {comparisonItem?.comparison_end_date
+                      ? formatDateUTC(comparisonItem.comparison_end_date, "DD/MM/YYYY")
+                      : "--"}
+                  </div>
+                </td>
+
+                <td className="px-6 py-6 text-center align-middle">
+                  <div className="flex items-center justify-center">
+                    <button
+                      className="w-10 h-10 rounded-full border border-teal-500 flex items-center justify-center hover:bg-teal-50 transition-colors"
+                      onClick={() => {
+                        if (typeof onRowClick === "function")
+                          onRowClick(comparisonItem.id);
+                      }}
+                      aria-label="Go to comparison"
+                      type="button"
+                    >
+                      <Image
+                        src="/assets/svgs/send.svg"
+                        alt="Go"
+                        width={16}
+                        height={16}
+                        style={{
+                          filter:
+                            "invert(52%) sepia(89%) saturate(464%) hue-rotate(131deg) brightness(91%) contrast(101%)",
+                        }}
+                      />
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))
+          )}
+        </tbody>
+
+      </table>
     </div>
   );
 };
