@@ -13,24 +13,24 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const pathname = usePathname();
 
   const menuItems = [
-    { icon: "assets/images/home-2.png", label: "Home", href: PRIVATE_PATH.ECOMPASS_HOME },
+    { icon: "/assets/images/home-2.png", label: "Home", href: PRIVATE_PATH.ECOMPASS_HOME },
     {
-      icon: "assets/images/dna.png",
+      icon: "/assets/images/dna.png",
       label: "eMERGE",
       href: PRIVATE_PATH.EMERGE_HOME,
     },
     {
-      icon: "assets/images/dna.png",
+      icon: "/assets/images/dna.png",
       label: "eVERSE",
       href: PRIVATE_PATH.EVERSE_HOME,
     },
     {
-      icon: "assets/images/color-swatch.png",
+      icon: "/assets/images/color-swatch.png",
       label: "RNA Library",
       href: PRIVATE_PATH.RNA_LIBRARY,
     },
-    { icon: "assets/images/sms.png", label: "Contact us", href: "#" },
-    { icon: "assets/images/setting-2.png", label: "Settings", href: PRIVATE_PATH.ACCOUNT_SETTINGS },
+    { icon: "/assets/images/sms.png", label: "Contact us", href: "#" },
+    { icon: "/assets/images/setting-2.png", label: "Settings", href: PRIVATE_PATH.ACCOUNT_SETTINGS },
   ];
 
   const isActive = (href: string) => {
@@ -56,7 +56,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         {/* Logo */}
         <div className="py-[48px]">
           <img
-            src="assets/images/eclipse-bio-logo.png"
+            src="/eclipse-logo.png"
             alt="EclipseBio"
             className="h-[34px] w-auto"
           />
@@ -78,7 +78,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                   : "text-[#525F69] hover:bg-[#E6F7F8]"
                   }`}
               >
-                <img src={Icon} className="w-[24px] h-[24px]" alt="Icon"/>
+                <img src={Icon} className="w-[24px] h-[24px]" alt="Icon" />
                 <span className="text-[18px] font-normal">{item.label}</span>
               </Link>
             );

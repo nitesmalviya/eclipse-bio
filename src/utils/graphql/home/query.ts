@@ -9,6 +9,7 @@ query GetFeaturedDatasets($limit: Float, $offset: Float) {
     datasets {
       assay_type
       name
+      created_at
     }
     total
   }
@@ -28,6 +29,7 @@ export const GET_ALL_PROJECTS_QUERY: DocumentNode = gql`
         id
         name
         active_status
+         created_at
         assays {
           name
         }

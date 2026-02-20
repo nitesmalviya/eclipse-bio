@@ -57,23 +57,26 @@ const EcompassHome = ({ featureDataSets, projectsData }: Props) => {
 
 
     return (
-        <div className="min-h-screen bg-white">
-            {/* Hero Section */}
-            <HeroSection />
-            <div className="space-y-[60px] px-6 md:px-[70px] py-10 md:py-[60px]">
-                <div className="w-full lg:min-h-[600px] rounded-3xl bg-white shadow-[0_4px_20px_0_rgba(84,110,116,0.12)] p-6 md:p-10 flex flex-col lg:flex-row gap-10">
-                    <StatsCard projectsData={projectsData} />
-                    <TableCard projectsList={projectsList} />
-                </div>
-                <div className="w-full lg:min-h-[600px] rounded-3xl bg-white shadow-[0_4px_20px_0_rgba(84,110,116,0.12)] p-6 md:p-10 flex flex-col lg:flex-row gap-10">
-                    <StatsCard projectsData={projectsData} />
-                    <TableDataSetsCard datasetsList={datasetsList} />
+        <div className="flex w-full min-h-screen font-titillium bg-[#F9FBFB]">
+            <div className="flex-1 flex flex-col">
+                <div className="flex-1">
+                    {/* Hero Section */}
+                    <HeroSection />
+                    <div className="space-y-[60px] px-6 md:px-[70px] py-10 md:py-[60px]">
+                        <div className="w-full lg:min-h-[600px] rounded-3xl bg-white shadow-[0_4px_20px_0_rgba(84,110,116,0.12)] p-6 md:p-10 flex flex-col lg:flex-row gap-10">
+                            <StatsCard projectsData={projectsData} />
+                            <TableCard projectsList={projectsList} />
+                        </div>
+                        <div className="w-full lg:min-h-[600px] rounded-3xl bg-white shadow-[0_4px_20px_0_rgba(84,110,116,0.12)] p-6 md:p-10 flex flex-col lg:flex-row gap-10">
+                            <StatsCard projectsData={projectsData} />
+                            <TableDataSetsCard datasetsList={datasetsList} />
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            {/* Floating action button */}
-            <button className="fixed right-4 sm:right-6 bottom-6 sm:bottom-8 bg-[#009CA6] text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full shadow-lg hover:opacity-90 transition text-sm font-semibold">
-                Learn more
-            </button>
+
+
         </div >
     );
 };

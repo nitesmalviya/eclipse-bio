@@ -1,5 +1,5 @@
 "use client"
-import { PRIVATE_PATH } from '@/src/utils/constant';
+import { PAGINATION_LIMIT, PRIVATE_PATH } from '@/src/utils/constant';
 import Breadcrumb from '../../ui/breadcrumb/Breadcrumb';
 import HeroSection from '../hero-section'
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -12,6 +12,9 @@ import { Comparisons, CreateComparisonInput } from "@/src/types/comparison-list"
 import { createComparison } from "@/src/store/actions/comparison-action";
 import { toast } from "sonner";
 import SearchSection from './search-section';
+import NewComparisonModal from './add-comparison-modal';
+import AddNewSection from './add-section';
+import { getEmergeComparisons } from '@/src/store/actions/emerge-action';
 
 interface EMergeComparisonListComponentProps {
     comparisons: Comparisons[] | null;
@@ -67,6 +70,31 @@ const ComparisonLists = ({ comparisons, initialSearch = "", }: EMergeComparisonL
         router.push(`${PRIVATE_PATH.EMERGE_COMPARISON_LISTS}/${id}`);
     };
 
+      // Handle add comparison
+  const handleAddComparison = async (newComparison: CreateComparisonInput) => {
+    try {
+      setLoading(true);
+      const res = await createComparison(newComparison);
+      if (res.success) {
+        toast.success(res.data?.message || "Comparison created successfully");
+        setIsModalOpen(false);
+        // Refresh the list
+        const refreshedList = await getEmergeComparisons({
+          limit: PAGINATION_LIMIT.LIMIT,
+          page: PAGINATION_LIMIT.PAGE,
+          search: searchQuery,
+        });
+        setComparisonList(refreshedList.data?.data || null);
+      } else {
+        toast.error(res.message || "Failed to create comparison");
+      }
+    } catch (error: any) {
+      toast.error(error.message || "An unexpected error occurred");
+    } finally {
+      setLoading(false);
+    }
+  };
+
     return (
         <div className="flex w-full min-h-screen bg-white font-titillium">
             <div className="w-full">
@@ -94,13 +122,7 @@ const ComparisonLists = ({ comparisons, initialSearch = "", }: EMergeComparisonL
                             </div>
                             <div className="flex items-center gap-4">
                                 <div className="flex-1 sm:flex-none">
-                                    <button
-                                        className="h-12 bg-[#009ca6] text-white rounded-lg px-6 border-none flex items-center justify-center sm:justify-start gap-2 font-manrope font-bold text-base cursor-pointer hover:bg-[#007d85] transition-colors w-full sm:w-auto"
-
-                                    >
-                                        <Image src="/assets/svgs/add-circle.svg" alt="+" width={16} height={16} />
-                                        New comparison
-                                    </button>
+                                    <AddNewSection setIsModalOpen={setIsModalOpen} />
                                 </div>
                                 <button className="h-12 w-12 shrink-0 bg-[#009ca6] rounded-lg border-none flex items-center justify-center cursor-pointer hover:bg-[#007d85] transition-colors">
                                     <Image
@@ -123,6 +145,12 @@ const ComparisonLists = ({ comparisons, initialSearch = "", }: EMergeComparisonL
                         />
                     </div>
                 </div>
+                <NewComparisonModal
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    onSave={handleAddComparison}
+                    loading={loading}
+                />
             </div>
         </div>
     )

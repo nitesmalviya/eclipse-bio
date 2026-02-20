@@ -1,4 +1,4 @@
-import { getAllAssayTypesAction } from "@/utils/graphql/assay-type/action";
+import { getAllAssayTypesAction } from "@/src/utils/graphql/assay-type/action";
 
 // get all assays action
 export const getAllAssayTypes = async () => {

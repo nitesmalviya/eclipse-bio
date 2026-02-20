@@ -18,6 +18,8 @@ export const getEmergeProjectsAction = async ({
   );
   return res as ProjectsResponse;
 };
+
+
 /**
 * Fetch projects from GraphQL API
 */
