@@ -35,7 +35,6 @@ const NewComparisonModal: React.FC<NewComparisonModalProps> = ({
   );
   const [projectList, setProjectList] = useState<Project[]>([]);
   const [selectedProjects, setSelectedProjects] = useState<Project[]>([]);
-  console.log(selectedProjects,"selectedProjectsselectedProjects")
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState({
     assays: false,

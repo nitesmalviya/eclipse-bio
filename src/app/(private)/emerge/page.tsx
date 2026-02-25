@@ -1,18 +1,21 @@
 import EmergeHome from '@/src/components/emerge/home';
+import { getEmergeComparisons, getEmergeProjects } from '@/src/store/actions/emerge-action';
 import { DASHBOARD_ITEMS_LIMIT } from '@/src/utils/constant';
-import { getEmergeComparisonsAction, getEmergeProjectsAction } from '@/src/utils/graphql/emerge/action';
 
 const EmergePage = async () => {
-    const res = await getEmergeProjectsAction({ variables: { filter: { limit: DASHBOARD_ITEMS_LIMIT } } });
-    const projects = res?.projects; 
-    const comparisonsRes = await getEmergeComparisonsAction({variables: { filter: { limit: DASHBOARD_ITEMS_LIMIT } }});
-    const comparisons = comparisonsRes?.comparisons?.data ?? [];
+    //projects
+    const projects = await getEmergeProjects({ limit: DASHBOARD_ITEMS_LIMIT });
+    //comparisons
+    const comparisons = await getEmergeComparisons({
+        limit: DASHBOARD_ITEMS_LIMIT,
+    });
+
     
-     
+
     return (
-        <EmergeHome 
-            projects={projects}
-            comparisons={comparisons}/>
+        <EmergeHome
+            projects={projects?.data?.data || null}
+            comparisons={comparisons?.data?.data || null} />
     )
 }
 

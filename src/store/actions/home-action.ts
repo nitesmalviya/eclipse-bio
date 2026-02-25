@@ -1,9 +1,9 @@
-import { GetFeaturedDatasetsInput } from "@/types/dataset";
-import { ProjectsInput } from "@/types/project";
+import { GetFeaturedDatasetsInput } from "@/src/types/dataset";
+import { ProjectsInput } from "@/src/types/project";
 import {
   getAllProjectsAction,
   getFeaturedDatasetsAction,
-} from "@/utils/graphql/home/action";
+} from "@/src/utils/graphql/home/action";
 
 // get all projects action
 export const getAllProjects = async (data?: ProjectsInput) => {
@@ -35,7 +35,7 @@ export const getAllProjects = async (data?: ProjectsInput) => {
 export const getFeaturedDatasets = async (form?: GetFeaturedDatasetsInput) => {
   try {
     const res = await getFeaturedDatasetsAction({ variables: form || {} });
-    
+
 
     if (res?.getFeaturedDatasets?.success) {
       return {

@@ -16,6 +16,7 @@ export interface FeaturedDataset {
   assay_type: string;
   id: string;
   name: string;
+  created_at: string;
 }
 export interface GetFeaturedDatasetsInput {
   limit?: number;

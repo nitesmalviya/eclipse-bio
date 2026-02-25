@@ -3,10 +3,8 @@ import { GetFeaturedDatasetsInput, GetFeaturedDatasetsResponse } from "@/src/typ
 import { fetchGraphQLMutation } from "../..";
 import { GET_ALL_PROJECTS_QUERY, GET_FEATURED_DATASETS_QUERY } from "./query";
 import { ProjectsInput, ProjectsResponse } from "@/src/types/project";
+ 
 
-/**
- * Fetch featured datasets from GraphQL API
- */
 export const getFeaturedDatasetsAction = async ({
   variables,
 }: {
@@ -19,9 +17,7 @@ export const getFeaturedDatasetsAction = async ({
   return res as GetFeaturedDatasetsResponse;
 };
 
-/**
- * Fetch projects from GraphQL API
- */
+ 
 export const getAllProjectsAction = async ({
   variables,
 }: {

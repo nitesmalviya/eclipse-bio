@@ -1,18 +1,21 @@
-import EcompassHome from '@/src/components/ecompass-home'
-import { DASHBOARD_ITEMS_LIMIT } from '@/src/utils/constant';
-import { getAllProjectsAction, getFeaturedDatasetsAction } from '@/src/utils/graphql/home/action';
+import EcompassHomeComponent from "@/src/components/ecompass-home";
+import {
+  getAllProjects,
+  getFeaturedDatasets,
+} from "@/src/store/actions/home-action";
+import { DASHBOARD_ITEMS_LIMIT } from "@/src/utils/constant";
 
-const EcompassHomePage = async () => {
-    // for feature data sets
-    const res = await getFeaturedDatasetsAction({ variables: { limit: DASHBOARD_ITEMS_LIMIT } });
-    const featureDataSets = res?.getFeaturedDatasets;
-    const projectsRes = await getAllProjectsAction({ variables: { filter: {} } });
-    const projectsData = projectsRes?.projects;
+const Home = async () => {
+  //projects
+  const projects = await getAllProjects({ limit: DASHBOARD_ITEMS_LIMIT });
+  //datasets
+  const datasets = await getFeaturedDatasets({ limit: DASHBOARD_ITEMS_LIMIT });
+  return (
+    <EcompassHomeComponent
+      datasets={datasets.data || null}
+      projects={projects.data || null}
+    />
+  );
+};
 
-    return (
-        <EcompassHome
-            featureDataSets={featureDataSets} projectsData={projectsData} />
-    )
-}
-
-export default EcompassHomePage;
+export default Home;

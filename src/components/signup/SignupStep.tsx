@@ -1,12 +1,14 @@
 "use client";
 import { useState, useRef } from "react";
-import { Eye, EyeOff, Loader, MoveUpRight } from "lucide-react";
+import { Eye, EyeOff, MoveUpRight } from "lucide-react";
 import SimpleReactValidator from "simple-react-validator";
 import { signup } from "@/src/store/actions/auth-action";
 import brandLogo from "../../../public/assets/images/app-logo.png"
 import { useAppDispatch } from "../../store/hooks";
 import { toast } from "sonner";
 import { SignupInput } from "@/src/types/auth-type";
+import Loader from "../ui/loader";
+import Image from "next/image";
 
 
 type Props = {
@@ -38,12 +40,13 @@ const SignupStep = ({ setStep, form, setForm }: Props) => {
 
     const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
+   debugger;
 
         if (validator.allValid()) {
             setLoading(true);
             try {
-                const res = await dispatch(signup(form));
+                const res = await dispatch(signup(form)) as { success: boolean; message: string };
+             
                 if (res?.success) {
                     toast.success(res?.message);
                     setStep(2)
@@ -72,7 +75,7 @@ const SignupStep = ({ setStep, form, setForm }: Props) => {
             {/* Header */}
             <header className="flex items-center justify-between w-full h-[80px] sm:h-[100px] p-[16px] sm:p-[24px] sm:pl-[100px] sm:pr-8 mx-auto bg-white/80 border border-white">
                 <div className="flex items-center">
-                    <img
+                    <Image
                         src={brandLogo}
                         alt="Eclipse Bio Logo"
                         className="object-contain w-[140px] h-[28px] sm:w-[250px] sm:h-[48px]"

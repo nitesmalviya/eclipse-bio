@@ -1,32 +1,26 @@
 "use client";
 import { useState } from "react";
-import HeroSection from "../hero-section";
-import ProjectTable from "../project-table";
-import TableSection from "../table-section";
 import {
     EMERGE_COMPARISON_TABS,
     EMERGE_PROJECT_TABS,
     PRIVATE_PATH,
 } from "@/src/utils/constant";
+import HeroSection from "../hero-section";
+import ProjectTable from "../project-table";
 import ComparisonTable from "../comparison-table";
+import TableSection from "../table-section";
 import { Project } from "@/src/types/project";
 import { Comparisons } from "@/src/types/comparison-list";
 
- 
-
-interface ApiProjectResponse {
-  data: Project[];
-}
 
 interface EMergeHomeComponentProps {
-  projects: ApiProjectResponse | null;
-  comparisons: Comparisons[] | null;
+    projects: Project[] | null;
+    comparisons: Comparisons[] | null;
 }
 
-const EmergeHome = ({ projects,comparisons }: EMergeHomeComponentProps) => {
+const EmergeHome = ({ projects, comparisons }: EMergeHomeComponentProps) => {
     const [activeProjectTab, setActiveProjectTab] = useState(0);
     const [activeComparisonTab, setActiveComparisonTab] = useState(0);
-    const projectsList = projects?.data ?? [];
 
     return (
         <div className="flex w-full min-h-screen bg-white font-titillium">
@@ -41,9 +35,7 @@ const EmergeHome = ({ projects,comparisons }: EMergeHomeComponentProps) => {
                         activeTab={activeProjectTab}
                         setActiveTab={setActiveProjectTab}
                     >
-                        <ProjectTable 
-                            projectsList={projectsList} 
-                            activeTab={activeProjectTab} />
+                        <ProjectTable projects={projects} activeTab={activeProjectTab} />
                     </TableSection>
                     {/* Comparison Lists Section */}
                     <TableSection

@@ -23,6 +23,7 @@ export const PRIVATE_PATH = {
   ACCOUNT_SETTINGS_PURCHASE_CREDITS: "/account-settings/purchase-credits",
   EVERSE_HOME: "/everse",
   RNA_LIBRARY: "/rna-library",
+  CONTACT_US: "/contact",
 };
 
 export const ROUTES_PATH = {

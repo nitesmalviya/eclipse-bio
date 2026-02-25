@@ -21,7 +21,6 @@ export default function Header({ onMenuClick }: HeaderProps) {
   const [confirmationModal, setConfirmationModal] = useState(false);
 
   const handleLogout = () => {
-    debugger;
     dispatch(logout());
     toast.success("Logged out successfully");
     router.push(PUBLIC_PATH.LOGIN);

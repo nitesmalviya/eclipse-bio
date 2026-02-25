@@ -1,84 +1,123 @@
 "use client";
-
+import { PRIVATE_PATH } from "@/src/utils/constant";
 import HeroSection from "./hero-section";
 import StatsCard from "./stats-card";
-import TableCard from "./table-projects-card";
-import TableDataSetsCard from "./table-datasets-card";
+import TableSection from "./table-section";
+import { FeaturedDatasetData } from "@/src/types/dataset";
+import { ProjectData } from "@/src/types/project";
 
-export interface DatasetType {
-    assay_type: string;
-    id: string;
-    name: string;
+interface EcompassHomeComponentProps {
+    readonly projects: ProjectData | null;
+    readonly datasets: FeaturedDatasetData | null;
 }
 
-export interface ProjectType {
-    id: string;
-    name: string;
-    slug?: string;
-    description?: string | null;
-    status?: string;
-    start_date?: string | null;
-    target_end_date?: string | null;
-    actual_end_date?: string | null;
-    identifier?: string;
-    progress_percentage?: number;
-    settings?: Record<string, any> | null;
-    tags?: string[] | null;
-    is_public?: boolean;
-    is_featured?: boolean;
-    active_status?: string;
-    created_at?: string;
-    updated_at?: string;
-    deleted_at?: string | null;
-    assay_type?: string;
+const EcompassHomeComponent = ({ projects, datasets }: EcompassHomeComponentProps) => {
+    const CARDS = {
+        EMERGE: {
+            id: 1,
+            TITLE: "eMERGE",
+            DESCRIPTION:
+                "A full-service partnership platform for RNA therapy characterization and optimization.",
+            STATS: [
+                {
+                    id: 1,
+                    label: "Total projects:",
+                    value: projects?.total ?? 0,
+                    iconPath: "/assets/images/Frame87.png",
+                },
+                {
+                    id: 2,
+                    label: "Active projects:",
+                    value: projects?.activeCount ?? 0,
+                    iconPath: "/assets/images/Frame88.png",
+                },
+            ],
+            BUTTON_TEXT: "See eMERGE projects",
+            BUTTON_LINK: PRIVATE_PATH.EMERGE_HOME,
+            TABLE_TITLE: "Featured projects",
+            LOGO_IMAGE: "/assets/images/eMerge_Layer_1.png",
 
-}
+        },
+        EVERSE: {
+            id: 2,
+            TITLE: "eVERSE",
+            DESCRIPTION: "A data-generation platform for AI-driven drug discovery.",
+            STATS: [
+                {
+                    id: 1,
+                    label: "Non-exclusive datasets",
+                    value: 0,
+                    iconPath: "/assets/images/Frame87DS.png",
+                },
+                {
+                    id: 2,
+                    label: "Exclusive datasets",
+                    value: 0,
+                    iconPath: "/assets/images/Frame88DS(2).png",
+                },
+            ],
+            BUTTON_TEXT: "See eVERSE projects",
+            BUTTON_LINK: PRIVATE_PATH.EVERSE_HOME,
+            TABLE_TITLE: "Featured datasets",
+            LOGO_IMAGE: "/assets/images/eVerse_Layer_1.png",
 
-
-export interface GetFeaturedDatasetsResponse {
-    datasets: DatasetType[];
-}
-export interface GetProjectsDataResponse {
-    message: string;
-    success: boolean;
-    activeCount: number;
-    total: number;
-    data: ProjectType[];
-}
-
-interface Props {
-    featureDataSets: GetFeaturedDatasetsResponse;
-    projectsData: GetProjectsDataResponse;
-}
-
-const EcompassHome = ({ featureDataSets, projectsData }: Props) => {
-    const datasetsList = featureDataSets?.datasets ?? [];
-    const projectsList = projectsData?.data ?? [];
-
+        },
+    };
 
     return (
         <div className="flex w-full min-h-screen font-titillium bg-[#F9FBFB]">
             <div className="flex-1 flex flex-col">
-                <div className="flex-1">
+                {/* Main Content */}
+                <main className="flex-1">
                     {/* Hero Section */}
                     <HeroSection />
-                    <div className="space-y-[60px] px-6 md:px-[70px] py-10 md:py-[60px]">
-                        <div className="w-full lg:min-h-[600px] rounded-3xl bg-white shadow-[0_4px_20px_0_rgba(84,110,116,0.12)] p-6 md:p-10 flex flex-col lg:flex-row gap-10">
-                            <StatsCard projectsData={projectsData} />
-                            <TableCard projectsList={projectsList} />
-                        </div>
-                        <div className="w-full lg:min-h-[600px] rounded-3xl bg-white shadow-[0_4px_20px_0_rgba(84,110,116,0.12)] p-6 md:p-10 flex flex-col lg:flex-row gap-10">
-                            <StatsCard projectsData={projectsData} />
-                            <TableDataSetsCard datasetsList={datasetsList} />
-                        </div>
+                    {/* Cards Container */}
+                    <div className="space-y-[60px] px-6 md:px-[80px] py-10 md:py-[60px]">
+                        {/* Emerge */}
+                        <article
+                            key={CARDS.EMERGE.id}
+                            className="w-full lg:min-h-[600px] rounded-3xl bg-white shadow-[0_4px_20px_0_rgba(84,110,116,0.12)] p-6 md:p-10 flex flex-col lg:flex-row gap-10"
+                        >
+                            {/* Left Part */}
+                            <StatsCard
+                                iconPath={CARDS?.EMERGE?.LOGO_IMAGE}
+                                description={CARDS?.EMERGE?.DESCRIPTION}
+                                buttonText={CARDS?.EMERGE?.BUTTON_TEXT}
+                                buttonLink={CARDS?.EMERGE?.BUTTON_LINK}
+                                stats={CARDS?.EMERGE?.STATS}
+                            />
+                            {/* Right Part - Table */}
+                            <TableSection
+                                tableTitle={CARDS?.EMERGE?.TABLE_TITLE}
+                                tableData={projects?.data || []}
+                            />
+                        </article>
+                        {/* EVERSE */}
+                        <article
+                            key={CARDS.EVERSE.id}
+                            className="w-full lg:min-h-[600px] rounded-3xl bg-white shadow-[0_4px_20px_0_rgba(84,110,116,0.12)] p-6 md:p-10 flex flex-col lg:flex-row gap-10"
+                        >
+                            {/* Left Part */}
+                            <StatsCard
+                                iconPath={CARDS?.EVERSE?.LOGO_IMAGE}
+                                description={CARDS?.EVERSE?.DESCRIPTION}
+                                buttonText={CARDS?.EVERSE?.BUTTON_TEXT}
+                                buttonLink={CARDS?.EVERSE?.BUTTON_LINK}
+                                stats={CARDS?.EVERSE?.STATS}
+                            />
+                            {/* Right Part - Table */}
+                            <TableSection
+                                tableTitle={CARDS?.EVERSE?.TABLE_TITLE}
+                                tableData={datasets?.datasets || []}
+                            />
+                        </article>
                     </div>
-
-                </div>
+                </main>
             </div>
-
-
-        </div >
+        </div>
     );
 };
 
-export default EcompassHome;
+
+
+export default EcompassHomeComponent;

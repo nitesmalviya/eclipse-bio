@@ -57,7 +57,7 @@ export const fetchGraphQLMutation = async <
   } catch (error: any) {
     if (error?.response) {
       const graphqlError = error?.response?.errors?.[0];
-      return { success: false, message: graphqlError.message }
+      return { success: false, message: graphqlError?.message || 'GraphQL error' }
     } else {
       return { success: false, message: 'An unexpected error occurred. Please try again, or log out and log back in.' }
     }

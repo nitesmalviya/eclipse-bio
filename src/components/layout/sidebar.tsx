@@ -29,8 +29,16 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       label: "RNA Library",
       href: PRIVATE_PATH.RNA_LIBRARY,
     },
-    { icon: "/assets/images/sms.png", label: "Contact us", href: "#" },
-    { icon: "/assets/images/setting-2.png", label: "Settings", href: PRIVATE_PATH.ACCOUNT_SETTINGS },
+    {
+      icon: "/assets/images/sms.png",
+      label: "Contact us",
+      href: PRIVATE_PATH.CONTACT_US
+    },
+    {
+      icon: "/assets/images/setting-2.png",
+      label: "Settings",
+      href: PRIVATE_PATH.ACCOUNT_SETTINGS
+    },
   ];
 
   const isActive = (href: string) => {
@@ -56,7 +64,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         {/* Logo */}
         <div className="py-[48px]">
           <img
-            src="/eclipse-logo.png"
+            src="/assets/images/eclipse-logo.png"
             alt="EclipseBio"
             className="h-[34px] w-auto"
           />

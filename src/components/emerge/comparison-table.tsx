@@ -16,8 +16,6 @@ const ComparisonTable = ({ comparisons, onRowClick }: ComparisonTableProps) => {
   const [sortConfig, setSortConfig] = React.useState<{ key: keyof Comparisons, direction: 'asc' | 'desc' } | null>(null);
   const [sortedComparisons, setSortedComparisons] = useState<Comparisons[]>(comparisons ?? []);
 
-  console.log(comparisons, "comparisons list");
-
   useEffect(() => {
     let sortableComparisons = [...(comparisons ?? [])];
     if (sortConfig !== null) {
