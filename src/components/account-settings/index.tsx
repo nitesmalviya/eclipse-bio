@@ -4,38 +4,34 @@ import { ChevronRight } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import ProfileSection from "./profile-section";
+import { useAppSelector } from "@/src/store/hooks";
 
 const AccountSettings = () => {
     const [confirmationModal, setConfirmationModal] = useState(false);
+    const user = useAppSelector((state) => state.auth.user);
 
     const Setting_Page_Items = [
 
         {
-            icon: "assets/svgs/setting-2.png",
+            icon: "/assets/images/setting.png",
             label: "Subscription Management",
             alt: "Subscription",
             href: PRIVATE_PATH.ACCOUNT_SETTINGS_SUBSCRIPTION_MANAGEMENT,
         },
         {
-            icon: "assets/svgs/coin.png",
+            icon: "/assets/images/coin.png",
             label: "Purchase Credits",
             alt: "Credits",
             href: PRIVATE_PATH.ACCOUNT_SETTINGS_PURCHASE_CREDITS,
         },
         {
-            icon: "assets/svgs/receipt-item.png",
+            icon: "/assets/images/receipt-item.png",
             label: "Billing",
             alt: "Billing",
             href: PRIVATE_PATH.ACCOUNT_SETTINGS_BILLING,
         },
         {
-            icon: "assets/svgs/message-question.png",
-            label: "Get Help",
-            alt: "Help",
-            href: "#",
-        },
-        {
-            icon: "assets/svgs/logout.png",
+            icon: "/assets/images/logout.png",
             label: "Log Out",
             alt: "Logout",
             // href: PUBLIC_PATH.LOGIN
@@ -53,7 +49,7 @@ const AccountSettings = () => {
                     Account Settings
                 </h1>
 
-                <ProfileSection />
+                <ProfileSection user={user} />
 
                 {/* Actions Card */}
                 <div className="bg-white rounded-2xl shadow-[0px_4px_50px_0px_rgba(84,110,116,0.08)] p-6 sm:p-8">

@@ -1,7 +1,6 @@
 "use server";
-import { ProjectsInput } from "@/src/types/project";
 import { fetchGraphQLMutation } from "../..";
-import { CONTACT_US_QUERY, CREATE_CONTACT_US_MUTATION } from "./query";
+import { CREATE_CONTACT_US_MUTATION } from "./query";
 import {
     CreateContactUsInput,
     CreateContactUsResponse,
@@ -20,4 +19,4 @@ export const createContactUsAction = async ({
     return res as CreateContactUsResponse;
 };
 
- 
+

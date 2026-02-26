@@ -130,7 +130,7 @@ function EmailVerify({ email, password }: Props) {
             <header className="flex items-center justify-between w-full h-[80px] sm:h-[100px] p-[16px] sm:p-[24px] sm:pl-[100px] sm:pr-8 mx-auto bg-white/80 border border-white">
                 <div className="flex items-center">
                     <img
-                        src="/app-logo.png"
+                        src="/assets/images/app-logo.png"
                         alt="Eclipse Bio Logo"
                         className="object-contain w-[140px] h-[28px] sm:w-[250px] sm:h-[48px]"
                     />

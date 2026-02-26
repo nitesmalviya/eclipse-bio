@@ -15,7 +15,7 @@ const NoResourceFound: React.FC<NoResourceFoundProps> = ({
 }) => {
   return (
     <div className="w-full h-full flex items-center justify-center py-10 px-4 md:px-10">
-      <div className="w-full max-w-2xl bg-white rounded-3xl p-10 md:p-14 shadow-[0px_4px_20px_0px_rgba(110,125,128,0.08)] flex flex-col items-center text-center">
+      <div className="w-full  bg-white rounded-3xl p-10 md:p-14 shadow-[0px_4px_20px_0px_rgba(110,125,128,0.08)] flex flex-col items-center text-center">
         {/* Icon Container */}
         <div className="w-20 h-20 md:w-24 md:h-24 bg-[#F9FBFB] rounded-full flex items-center justify-center mb-8">
           <Image

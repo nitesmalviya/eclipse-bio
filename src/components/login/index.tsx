@@ -114,7 +114,7 @@ const Login = () => {
                             playsInline
                             className="w-full h-full object-cover opacity-50"
                         >
-                            <source src="assets/videos/signin-video.mp4" type="video/mp4" />
+                            <source src="/assets/videos/signin-video.mp4" type="video/mp4" />
                         </video>
                     </div>
 
