@@ -1,10 +1,11 @@
 "use client";
 
-import { createContactUsAction } from "@/src/utils/graphql/contact/action";
+import { createContactUsAction } from "@/utils/graphql/contact/action";
 import { useRef, useState } from "react";
 import SimpleReactValidator from "simple-react-validator";
 import { toast } from "sonner";
 import Loader from "../ui/loader";
+
 const defaultFormData = {
     first_name: "",
     last_name: "",

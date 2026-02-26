@@ -1,9 +1,9 @@
 "use client";
 import ProjectTable from "../project-table";
 import TableSection from "../table-section";
-import { EMERGE_PROJECT_TABS } from "@/src/utils/constant";
+import { EMERGE_PROJECT_TABS } from "@/utils/constant";
 import Loader from "../../ui/loader";
-import { Project } from "@/src/types/project";
+import { Project } from "@/types/project";
 
 interface ProjectTableSectionProps {
   readonly projects: Project[] | null;

@@ -4,13 +4,13 @@ import {
     EMERGE_COMPARISON_TABS,
     EMERGE_PROJECT_TABS,
     PRIVATE_PATH,
-} from "@/src/utils/constant";
+} from "@/utils/constant";
 import HeroSection from "../hero-section";
 import ProjectTable from "../project-table";
 import ComparisonTable from "../comparison-table";
 import TableSection from "../table-section";
-import { Project } from "@/src/types/project";
-import { Comparisons } from "@/src/types/comparison-list";
+import { Project } from "@/types/project";
+import { Comparisons } from "@/types/comparison-list";
 
 
 interface EMergeHomeComponentProps {

@@ -1,5 +1,5 @@
-import { CreateComparisonInput } from "@/src/types/comparison-list";
-import { createComparisonAction } from "@/src/utils/graphql/comparisons/action";
+import { CreateComparisonInput } from "@/types/comparison-list";
+import { createComparisonAction } from "@/utils/graphql/comparisons/action";
 
 // create comparison action
 export const createComparison = async (data: CreateComparisonInput) => {

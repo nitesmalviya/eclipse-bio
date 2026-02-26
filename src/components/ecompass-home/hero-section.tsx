@@ -1,4 +1,4 @@
-import { HOME_CONSTANTS } from "@/src/utils/constant";
+import { HOME_CONSTANTS } from "@/utils/constant";
 
 export default function HeroSection() {
     return (

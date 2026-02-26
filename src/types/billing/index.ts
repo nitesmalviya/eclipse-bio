@@ -1,4 +1,4 @@
-import { PAGINATION_LIMIT } from "@/src/utils/constant"
+import { PAGINATION_LIMIT } from "@/utils/constant"
 
 export interface BillingItem {
     id: string;

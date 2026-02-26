@@ -3,13 +3,13 @@ import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import Breadcrumb from "../../ui/breadcrumb/Breadcrumb";
 import { useState, useMemo, useEffect } from "react";
-import { PRIVATE_PATH } from "@/src/utils/constant";
-import { Project } from "@/src/types/project";
-import { debounce } from "@/src/utils/common-service";
+import { PRIVATE_PATH } from "@/utils/constant";
+import { Project } from "@/types/project";
+import { debounce } from "@/utils/common-service";
 import HeroSection from "../hero-section";
 import SearchSection from "./search-section";
 import ProjectTableSection from "./project-table-section";
-import { getEmergeProjects } from "@/src/store/actions/emerge-action";
+import { getEmergeProjects } from "@/store/actions/emerge-action";
 import AddNewSection from "./add-new-section";
 import NewProjectModal from "./add-project-modal";
 

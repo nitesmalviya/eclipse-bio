@@ -1,7 +1,6 @@
 "use client";
 
 import {
-    FormEvent,
     useState,
     useRef,
     KeyboardEvent,
@@ -10,11 +9,10 @@ import {
 import { Loader, MoveUpRight } from "lucide-react";
 import SimpleReactValidator from "simple-react-validator";
 import { useRouter } from "next/navigation";
-import { PRIVATE_PATH } from "@/src/utils/constant";
-import { resendOtpSignup, verifyEmail } from "@/src/store/actions/auth-action";
+import { PRIVATE_PATH } from "@/utils/constant";
+import { resendOtpSignup, verifyEmail } from "@/store/actions/auth-action";
 import { toast } from "sonner";
-// import Loader from "../ui/loader";
-import { useAppDispatch } from "@/src/store/hooks";
+import { useAppDispatch } from "@/store/hooks";
 
 type Props = {
     readonly email: string;
@@ -241,7 +239,7 @@ function EmailVerify({ email, password }: Props) {
                                     >
                                         Sign Up
                                         {loading ? (
-                                            <Loader size="sm" className="h-2 w-2"/>
+                                            <Loader size="sm" className="h-2 w-2" />
                                         ) : (
                                             <MoveUpRight className="w-[20px] sm:w-[24px]" />
                                         )}

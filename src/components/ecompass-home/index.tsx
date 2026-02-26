@@ -1,10 +1,10 @@
 "use client";
-import { PRIVATE_PATH } from "@/src/utils/constant";
+import { PRIVATE_PATH } from "@/utils/constant";
 import HeroSection from "./hero-section";
 import StatsCard from "./stats-card";
 import TableSection from "./table-section";
-import { FeaturedDatasetData } from "@/src/types/dataset";
-import { ProjectData } from "@/src/types/project";
+import { FeaturedDatasetData } from "@/types/dataset";
+import { ProjectData } from "@/types/project";
 
 interface EcompassHomeComponentProps {
     readonly projects: ProjectData | null;

@@ -1,9 +1,9 @@
 import {
   getEmergeComparisonsAction,
   getEmergeProjectsAction,
-} from "@/src/utils/graphql/emerge/action";
-import { ProjectsInput } from "@/src/types/project";
-import { ComparisonsInput } from "@/src/types/comparison-list";
+} from "@/utils/graphql/emerge/action";
+import { ProjectsInput } from "@/types/project";
+import { ComparisonsInput } from "@/types/comparison-list";
 
 export const getEmergeProjects = async (data: ProjectsInput) => {
   try {

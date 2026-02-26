@@ -1,9 +1,9 @@
-import EcompassHomeComponent from "@/src/components/ecompass-home";
+import EcompassHomeComponent from "@/components/ecompass-home";
 import {
   getAllProjects,
   getFeaturedDatasets,
-} from "@/src/store/actions/home-action";
-import { DASHBOARD_ITEMS_LIMIT } from "@/src/utils/constant";
+} from "@/store/actions/home-action";
+import { DASHBOARD_ITEMS_LIMIT } from "@/utils/constant";
 
 const Home = async () => {
   //projects

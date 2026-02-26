@@ -1,7 +1,7 @@
-import Billing from "@/src/components/billing";
-import { DEFAULT_PAGINATION } from "@/src/types/billing";
-import { SORT_ORDER } from "@/src/utils/constant";
-import { getPaymentHistoryAction } from "@/src/utils/graphql/billing/action";
+import Billing from "@/components/billing";
+import { DEFAULT_PAGINATION } from "@/types/billing";
+import { SORT_ORDER } from "@/utils/constant";
+import { getPaymentHistoryAction } from "@/utils/graphql/billing/action";
 
 const BillingPage = async () => {
     const res = await getPaymentHistoryAction({

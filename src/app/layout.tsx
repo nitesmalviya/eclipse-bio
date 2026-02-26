@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
-import Layout from "@/src/components/hoc/main-layout";
+import Layout from "@/components/hoc/main-layout";
 
-import Toaster from "@/src/components/ui/toaster";
+import Toaster from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Create Next App",

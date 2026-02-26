@@ -1,8 +1,8 @@
 "use server";
-import { GetFeaturedDatasetsInput, GetFeaturedDatasetsResponse } from "@/src/types/dataset";
+import { GetFeaturedDatasetsInput, GetFeaturedDatasetsResponse } from "@/types/dataset";
 import { fetchGraphQLMutation } from "../..";
 import { GET_ALL_PROJECTS_QUERY, GET_FEATURED_DATASETS_QUERY } from "./query";
-import { ProjectsInput, ProjectsResponse } from "@/src/types/project";
+import { ProjectsInput, ProjectsResponse } from "@/types/project";
  
 
 export const getFeaturedDatasetsAction = async ({

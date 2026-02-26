@@ -1,6 +1,6 @@
-import EmergeHome from '@/src/components/emerge/home';
-import { getEmergeComparisons, getEmergeProjects } from '@/src/store/actions/emerge-action';
-import { DASHBOARD_ITEMS_LIMIT } from '@/src/utils/constant';
+import EmergeHome from '@/components/emerge/home';
+import { getEmergeComparisons, getEmergeProjects } from '@/store/actions/emerge-action';
+import { DASHBOARD_ITEMS_LIMIT } from '@/utils/constant';
 
 const EmergePage = async () => {
     //projects
@@ -9,9 +9,7 @@ const EmergePage = async () => {
     const comparisons = await getEmergeComparisons({
         limit: DASHBOARD_ITEMS_LIMIT,
     });
-
     
-
     return (
         <EmergeHome
             projects={projects?.data?.data || null}

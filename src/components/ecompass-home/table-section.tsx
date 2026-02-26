@@ -2,11 +2,11 @@
 
 import NoResourceFound from "../ui/no-resource-found";
 import { useState, useMemo } from "react";
-import { handleSort } from "@/src/utils/common-service";
-import { SORT_ORDER } from "@/src/utils/constant";
+import { handleSort } from "@/utils/common-service";
+import { SORT_ORDER } from "@/utils/constant";
 import TableHeaderCell from "../emerge/table-header-cell";
-import { Project } from "@/src/types/project";
-import { FeaturedDataset } from "@/src/types/dataset";
+import { Project } from "@/types/project";
+import { FeaturedDataset } from "@/types/dataset";
 
 interface TableSectionProps {
   readonly tableTitle: string;
@@ -36,7 +36,12 @@ export default function TableSection({
   };
 
   const sortedData = useMemo(() => {
-    return handleSort(tableData, sortConfig.key, sortConfig.order);
+    // Ensure 'assay_type' is always a string for each row
+    const normalizedData = tableData.map((row: any) => ({
+      ...row,
+      assay_type: typeof row.assay_type === "string" ? row.assay_type : "",
+    }));
+    return handleSort(normalizedData, sortConfig.key, sortConfig.order);
   }, [tableData, sortConfig]);
 
   return (

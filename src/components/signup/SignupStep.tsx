@@ -2,11 +2,11 @@
 import { useState, useRef } from "react";
 import { Eye, EyeOff, MoveUpRight } from "lucide-react";
 import SimpleReactValidator from "simple-react-validator";
-import { signup } from "@/src/store/actions/auth-action";
+import { signup } from "@/store/actions/auth-action";
 import brandLogo from "../../../public/assets/images/app-logo.png"
 import { useAppDispatch } from "../../store/hooks";
 import { toast } from "sonner";
-import { SignupInput } from "@/src/types/auth-type";
+import { SignupInput } from "@/types/auth-type";
 import Loader from "../ui/loader";
 import Image from "next/image";
 

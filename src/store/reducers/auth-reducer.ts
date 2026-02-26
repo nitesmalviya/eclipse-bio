@@ -2,7 +2,7 @@
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
-import { AuthState, SigninPayload } from "@/src/types/auth-type";
+import { AuthState, SigninPayload } from "@/types/auth-type";
 
 const access_token = Cookies.get("access_token") ?? ""
 const refresh_token = Cookies.get("refresh_token") ?? ""

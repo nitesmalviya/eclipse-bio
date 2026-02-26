@@ -1,8 +1,8 @@
 "use server";
-import { ComparisonListResponse, ComparisonsInput } from "@/src/types/comparison-list";
+import { ComparisonListResponse, ComparisonsInput } from "@/types/comparison-list";
 import { fetchGraphQLMutation } from "../..";
 import { GET_EMERGE_COMPARISON_LISTS_QUERY, GET_EMERGE_PROJECTS_QUERY } from "./query";
-import { ProjectsInput, ProjectsResponse } from "@/src/types/project";
+import { ProjectsInput, ProjectsResponse } from "@/types/project";
 
 /**
 * Fetch projects from GraphQL API

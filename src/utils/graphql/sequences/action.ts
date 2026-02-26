@@ -1,17 +1,21 @@
 
 "use server";
-import { fetchGraphQLMutation } from "../..";
+import { fetchGraphQLQuery } from "../..";
 import { GET_RNA_SEQUENCES_QUERY } from "./query";
-import { GetSequencesResponse, GetSequencesInput } from "@/src/types/sequences";
+import { GetSequencesResponse, GetSequencesInput } from "@/types/sequences";
 
-export const getSequencesAction = async ({
-    variables,
-}: {
-    variables: GetSequencesInput;
-}): Promise<GetSequencesResponse> => {
-    const res = await fetchGraphQLMutation<GetSequencesResponse>(
-        GET_RNA_SEQUENCES_QUERY,
-        { ...variables },
-    );
-    return res as GetSequencesResponse;
+
+export const getSequencesAction = async (input: GetSequencesInput) => {
+    try {
+        const response = await fetchGraphQLQuery<
+            { getRnaSequences: GetSequencesResponse },
+            { input: GetSequencesInput }>(
+                GET_RNA_SEQUENCES_QUERY,
+                { input }
+            );
+        return response.getRnaSequences;
+    } catch (error) {
+        console.error("Error fetching payment history:", error);
+        throw error;
+    }
 };

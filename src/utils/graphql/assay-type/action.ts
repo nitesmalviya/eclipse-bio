@@ -1,5 +1,5 @@
 "use server";
-import { AssayTypesResponse } from "@/src/types/assay-type";
+import { AssayTypesResponse } from "@/types/assay-type";
 import { fetchGraphQLQuery } from "../..";
 import { GET_ALL_ASSAY_TYPES_QUERY } from "./query";
 

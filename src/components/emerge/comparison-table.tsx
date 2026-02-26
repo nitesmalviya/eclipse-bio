@@ -1,10 +1,10 @@
 
 "use client";
-import { formatDateUTC } from "@/src/utils/common-service";
+import { formatDateUTC } from "@/utils/common-service";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
-import type { Comparisons } from "@/src/types/comparison-list";
+import type { Comparisons } from "@/types/comparison-list";
 
 interface ComparisonTableProps {
   comparisons: Comparisons[] | null;

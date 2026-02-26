@@ -1,14 +1,14 @@
 "use client";
-import { PRIVATE_PATH } from "@/src/utils/constant";
+import { PRIVATE_PATH } from "@/utils/constant";
 import { ChevronRight } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import ProfileSection from "./profile-section";
-import { useAppSelector } from "@/src/store/hooks";
+import { useAppSelector } from "@/store/hooks";
 
 const AccountSettings = () => {
     const [confirmationModal, setConfirmationModal] = useState(false);
-    const user = useAppSelector((state) => state.auth.user);
+    const user = useAppSelector((state) => state.auth.user ) ;
 
     const Setting_Page_Items = [
 
@@ -34,8 +34,6 @@ const AccountSettings = () => {
             icon: "/assets/images/logout.png",
             label: "Log Out",
             alt: "Logout",
-            // href: PUBLIC_PATH.LOGIN
-            // ,
             onClick: () => setConfirmationModal(true),
         },
     ];

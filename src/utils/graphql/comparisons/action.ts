@@ -5,7 +5,7 @@ import { CREATE_COMPARISON_MUTATION } from "./query";
 import {
   CreateComparisonInput,
   CreateComparisonResponse,
-} from "@/src/types/comparison-list";
+} from "@/types/comparison-list";
 
 // create comparison action
 export const createComparisonAction = async ({

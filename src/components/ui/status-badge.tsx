@@ -1,4 +1,4 @@
-import { getStatusBadge } from "@/src/utils/common-service";
+import { getStatusBadge } from "@/utils/common-service";
 
 interface StatusBadgeProps {
     status: string;

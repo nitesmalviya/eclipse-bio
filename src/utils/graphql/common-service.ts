@@ -1,7 +1,7 @@
 "use client";
 import { toast } from "sonner";
 import { BehaviorSubject } from "rxjs";
-import { SORT_ORDER } from "@/src/utils/constant";
+import { SORT_ORDER } from "@/utils/constant";
 
 // for global loader service
 export const isLoading = new BehaviorSubject<boolean>(false);

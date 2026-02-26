@@ -1,4 +1,4 @@
-import Contact from "@/src/components/contact";
+import Contact from "@/components/contact";
 
 const ContactPage = async () => {
 

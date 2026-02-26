@@ -3,7 +3,7 @@
 
 import { GraphQLClient } from 'graphql-request';
 import { cookies } from 'next/headers';
-import { config } from '@/src/utils/config';
+import { config } from '@/utils/config';
 import { DocumentNode } from '@apollo/client';
 
 const graphqlClient = async () => {

@@ -1,9 +1,9 @@
-import { GetFeaturedDatasetsInput } from "@/src/types/dataset";
-import { ProjectsInput } from "@/src/types/project";
+import { GetFeaturedDatasetsInput } from "@/types/dataset";
+import { ProjectsInput } from "@/types/project";
 import {
   getAllProjectsAction,
   getFeaturedDatasetsAction,
-} from "@/src/utils/graphql/home/action";
+} from "@/utils/graphql/home/action";
 
 // get all projects action
 export const getAllProjects = async (data?: ProjectsInput) => {

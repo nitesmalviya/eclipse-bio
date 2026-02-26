@@ -1,6 +1,3 @@
-"use client";
-
-
 interface User {
     display_name: string;
     email: string;
@@ -21,7 +18,8 @@ const ProfileSection = ({ user }: ProfileSectionProps) => {
                     <div className="w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] rounded-full bg-[#009CA6] flex items-center justify-center">
                         <span className="text-white text-[20px] sm:text-[24px] font-semibold"></span></div>
                     <h2 className="text-[24px] sm:text-[30px] font-normal text-[#525F69]"></h2>
-                </div><div className="flex flex-wrap items-center gap-3 sm:gap-8 ">
+                </div>
+                <div className="flex flex-wrap items-center gap-3 sm:gap-8 ">
                     <div className="flex items-center gap-2">
                         <img alt="Credits" className="w-[24px] h-[24px] sm:w-[24px] sm:h-[24px]" src="/assets/images/coin.png" />
                         <span className="text-[16px] sm:text-[16px] font-semibold text-[#009CA6]">Total Credits:</span>

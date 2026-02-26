@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { SignupInput } from "@/src/types/auth-type";
+import { SignupInput } from "@/types/auth-type";
 import EmailVerify from "./VerifyStep";
 import SignupStep from "./SignupStep";
 

@@ -4,7 +4,7 @@ import { CREATE_CONTACT_US_MUTATION } from "./query";
 import {
     CreateContactUsInput,
     CreateContactUsResponse,
-} from "@/src/types/contact";
+} from "@/types/contact";
 
 // create contact us action
 export const createContactUsAction = async ({

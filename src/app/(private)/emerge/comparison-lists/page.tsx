@@ -1,6 +1,6 @@
-import ComparisonLists from '@/src/components/emerge/comparison-lists';
-import { PAGINATION_LIMIT } from '@/src/utils/constant';
-import { getEmergeComparisonsAction } from '@/src/utils/graphql/emerge/action';
+import ComparisonLists from '@/components/emerge/comparison-lists';
+import { PAGINATION_LIMIT } from '@/utils/constant';
+import { getEmergeComparisonsAction } from '@/utils/graphql/emerge/action';
 
 
 const EMergeComparisonListsPage = async ({
@@ -19,7 +19,9 @@ const EMergeComparisonListsPage = async ({
       }
     }
   });
+  
   const comparisons = comparisonsRes?.comparisons?.data ?? [];
+
   return (
     <ComparisonLists 
       comparisons={comparisons} 

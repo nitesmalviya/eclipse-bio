@@ -1,20 +1,20 @@
 "use client"
-import { PAGINATION_LIMIT, PRIVATE_PATH } from '@/src/utils/constant';
+import { PAGINATION_LIMIT, PRIVATE_PATH } from '@/utils/constant';
 import Breadcrumb from '../../ui/breadcrumb/Breadcrumb';
 import HeroSection from '../hero-section'
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Image from 'next/image';
 import ComparisonTableSection from './comparison-table-section';
-import { debounce } from '@/src/utils/common-service';
-import { getEmergeComparisonsAction } from '@/src/utils/graphql/emerge/action';
+import { debounce } from '@/utils/common-service';
+import { getEmergeComparisonsAction } from '@/utils/graphql/emerge/action';
 import { useState, useMemo, useEffect } from "react";
-import { Comparisons, CreateComparisonInput } from "@/src/types/comparison-list";
-import { createComparison } from "@/src/store/actions/comparison-action";
+import { Comparisons, CreateComparisonInput } from "@/types/comparison-list";
+import { createComparison } from "@/store/actions/comparison-action";
 import { toast } from "sonner";
 import SearchSection from './search-section';
 import NewComparisonModal from './add-comparison-modal';
 import AddNewSection from './add-section';
-import { getEmergeComparisons } from '@/src/store/actions/emerge-action';
+import { getEmergeComparisons } from '@/store/actions/emerge-action';
 
 interface EMergeComparisonListComponentProps {
     comparisons: Comparisons[] | null;
@@ -70,30 +70,30 @@ const ComparisonLists = ({ comparisons, initialSearch = "", }: EMergeComparisonL
         router.push(`${PRIVATE_PATH.EMERGE_COMPARISON_LISTS}/${id}`);
     };
 
-      // Handle add comparison
-  const handleAddComparison = async (newComparison: CreateComparisonInput) => {
-    try {
-      setLoading(true);
-      const res = await createComparison(newComparison);
-      if (res.success) {
-        toast.success(res.data?.message || "Comparison created successfully");
-        setIsModalOpen(false);
-        // Refresh the list
-        const refreshedList = await getEmergeComparisons({
-          limit: PAGINATION_LIMIT.LIMIT,
-          page: PAGINATION_LIMIT.PAGE,
-          search: searchQuery,
-        });
-        setComparisonList(refreshedList.data?.data || null);
-      } else {
-        toast.error(res.message || "Failed to create comparison");
-      }
-    } catch (error: any) {
-      toast.error(error.message || "An unexpected error occurred");
-    } finally {
-      setLoading(false);
-    }
-  };
+    // Handle add comparison
+    const handleAddComparison = async (newComparison: CreateComparisonInput) => {
+        try {
+            setLoading(true);
+            const res = await createComparison(newComparison);
+            if (res.success) {
+                toast.success(res.data?.message || "Comparison created successfully");
+                setIsModalOpen(false);
+                // Refresh the list
+                const refreshedList = await getEmergeComparisons({
+                    limit: PAGINATION_LIMIT.LIMIT,
+                    page: PAGINATION_LIMIT.PAGE,
+                    search: searchQuery,
+                });
+                setComparisonList(refreshedList.data?.data || null);
+            } else {
+                toast.error(res.message || "Failed to create comparison");
+            }
+        } catch (error: any) {
+            toast.error(error.message || "An unexpected error occurred");
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <div className="flex w-full min-h-screen bg-white font-titillium">

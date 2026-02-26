@@ -3,13 +3,13 @@ import { useState, useRef } from "react";
 import { Loader2 } from "lucide-react";
 import SimpleReactValidator from "simple-react-validator";
 import { useRouter } from "next/navigation";
-import { login } from "@/src/store/actions/auth-action";
+import { login } from "@/store/actions/auth-action";
 import Image from "next/image";
 import BrandLogo from "../../../public/assets/images/app-logo.png"
 import { useAppDispatch } from "../../store/hooks";
-import { PRIVATE_PATH } from "@/src/utils/constant";
+import { PRIVATE_PATH } from "@/utils/constant";
 import { toast } from "sonner";
-import { SignInInput } from "@/src/types/auth-type";
+import { SignInInput } from "@/types/auth-type";
 
 const defaultForm = {
     email: "",

@@ -1,9 +1,9 @@
 "use client";
 import { refreshToken } from "../actions/auth-action";
 import { store } from "../store";
-import { AnyType } from "@/src/types/common-types";
+import { AnyType } from "@/types/common-types";
 import * as API from "./serverApis";
-import clientErrorHandler from "@/src/utils/axiosConfig/interceptors/clientErrorHandler"
+import clientErrorHandler from "@/utils/axiosConfig/interceptors/clientErrorHandler"
 
 interface PromiseType {
     success: boolean,

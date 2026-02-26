@@ -1,5 +1,5 @@
 "use server";
-import axios from "@/src/utils/axiosConfig";
+import axios from "@/utils/axiosConfig";
 
 export const post = async (url: string, body: object) => axios.post(url, body);
 

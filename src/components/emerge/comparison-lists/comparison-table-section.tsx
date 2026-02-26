@@ -1,7 +1,7 @@
-import { Comparisons } from "@/src/types/comparison-list";
+import { Comparisons } from "@/types/comparison-list";
 import ComparisonTable from "../comparison-table";
 import TableSection from "../table-section";
-import { EMERGE_COMPARISON_TABS } from "@/src/utils/constant";
+import { EMERGE_COMPARISON_TABS } from "@/utils/constant";
 import Loader from "../../ui/loader";
 
 interface ComparisonTableSectionProps {

@@ -2,10 +2,10 @@
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { PRIVATE_PATH, SORT_ORDER } from "@/src/utils/constant";
-import { Project } from "@/src/types/project";
+import { PRIVATE_PATH, SORT_ORDER } from "@/utils/constant";
+import { Project } from "@/types/project";
 import NoResourceFound from "../ui/no-resource-found";
-import { formatDateUTC, handleSort } from "@/src/utils/common-service";
+import { formatDateUTC, handleSort } from "@/utils/common-service";
 import TableHeaderCell from "./table-header-cell";
 
 interface ProjectTableProps {

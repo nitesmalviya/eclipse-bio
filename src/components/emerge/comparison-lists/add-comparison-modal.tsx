@@ -2,11 +2,11 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
 import Image from "next/image";
 import Calendar from "../../ui/calendar/Calendar";
-import { getAllAssayTypes } from "@/src/store/actions/assay-type-action";
-import { AssayType } from "@/src/types/assay-type";
-import { getEmergeProjects } from "@/src/store/actions/emerge-action";
-import { Project } from "@/src/types/project";
-import { debounce, formatToUTCISO } from "@/src/utils/common-service";
+import { getAllAssayTypes } from "@/store/actions/assay-type-action";
+import { AssayType } from "@/types/assay-type";
+import { getEmergeProjects } from "@/store/actions/emerge-action";
+import { Project } from "@/types/project";
+import { debounce, formatToUTCISO } from "@/utils/common-service";
 import SimpleReactValidator from "simple-react-validator";
 import Loader from "../../ui/loader";
 
@@ -73,7 +73,7 @@ const NewComparisonModal: React.FC<NewComparisonModalProps> = ({
 
   // Fetch projects from API
   const fetchProjects = async (query: string) => {
-    
+
     setLoading((prev) => ({ ...prev, projects: true }));
     try {
       const res = await getEmergeProjects({ search: query });

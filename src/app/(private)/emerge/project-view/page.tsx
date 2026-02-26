@@ -1,6 +1,4 @@
-import EMergeProjectView from "@/src/components/emerge/project-view";
-
-
+import EMergeProjectView from "@/components/emerge/project-view";
 
 const emergeProjectViewPage = () => {
     return (

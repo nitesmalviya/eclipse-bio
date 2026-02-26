@@ -1,6 +1,6 @@
 "use client";
 
-import { PRIVATE_PATH } from "@/src/utils/constant";
+import { PRIVATE_PATH } from "@/utils/constant";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 

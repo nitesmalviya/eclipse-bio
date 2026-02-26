@@ -1,4 +1,4 @@
-import AccountSettings from "@/src/components/account-settings";
+import AccountSettings from "@/components/account-settings";
 
 const AccountSettingsPage = () => {
     return (

@@ -1,6 +1,6 @@
-import { formatDateUTC } from "@/src/utils/graphql/common-service";
+import { formatDateUTC } from "@/utils/graphql/common-service";
 import StatusBadge from "../ui/status-badge";
-import { BillingItem } from "@/src/types/billing";
+import { BillingItem } from "@/types/billing";
 
 interface TableRowProps {
     paymentItem: BillingItem;

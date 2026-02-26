@@ -3,7 +3,7 @@
 
 import { fetchGraphQLQuery } from "../../index";
 import { GET_PAYMENT_HISTORY_QUERY } from "./query";
-import { GetTransactionsInput, GetPaymentHistoryResponse } from "@/src/types/billing/index";
+import { GetTransactionsInput, GetPaymentHistoryResponse } from "@/types/billing/index";
 
 export const getPaymentHistoryAction = async (input: GetTransactionsInput) => {
     try {

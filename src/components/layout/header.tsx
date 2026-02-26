@@ -1,11 +1,11 @@
 "use client";
 
 import { Menu } from "lucide-react";
-import { useAppDispatch, useAppSelector } from "@/src/store/hooks";
-import { HEADER_CONSTANTS, PUBLIC_PATH } from "@/src/utils/constant";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { HEADER_CONSTANTS, PUBLIC_PATH } from "@/utils/constant";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { logout } from "@/src/store/reducers/auth-reducer";
+import { logout } from "@/store/reducers/auth-reducer";
 import ConfirmationModal from "../ui/confirmation-modal";
 import { useState } from "react";
 

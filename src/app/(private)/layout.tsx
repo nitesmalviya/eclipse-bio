@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Sidebar from "@/src/components/layout/sidebar";
-import Header from "@/src/components/layout/header";
+import Sidebar from "@/components/layout/sidebar";
+import Header from "@/components/layout/header";
 
 
 interface PrivateLayoutProps {

@@ -11,15 +11,15 @@ import {
   resetPasswordAction,
   signInAction,
   signupAction,
-} from "@/src/utils/graphql/auth/action";
+} from "@/utils/graphql/auth/action";
 import {
   EmailVerificationInput,
   ForgetPasswordForm,
   ForgetPasswordInput,
   SignInInput,
   SignupInput,
-} from "@/src/types/auth-type";
-import { RoleType } from "@/src/types/common-types";
+} from "@/types/auth-type";
+import { RoleType } from "@/types/common-types";
 
 export const refreshToken = async (dispatch: AppDispatch) => {
   const res: any = await API.get("/api/auth/refresh");

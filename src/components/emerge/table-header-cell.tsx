@@ -1,7 +1,6 @@
 "use client";
-import React from "react";
 import Image from "next/image";
-import { SORT_ORDER } from "@/src/utils/constant";
+import { SORT_ORDER } from "@/utils/constant";
 
 interface TableHeaderCellProps<T> {
   label: string;

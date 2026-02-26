@@ -2,9 +2,8 @@ import { gql, DocumentNode } from "@apollo/client";
 
 // Data sets query
 export const GET_RNA_SEQUENCES_QUERY: DocumentNode = gql`
-
-query GetRnaSequences {
-  getRnaSequences {
+query GetRnaSequences($input: GetRnaSequencesInput) {
+  getRnaSequences(input: $input) {
     success
     message
     data {

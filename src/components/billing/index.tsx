@@ -1,16 +1,16 @@
 "use client";
 import { useRouter } from "next/navigation";
 import Breadcrumb from "../ui/breadcrumb/Breadcrumb"
-import { PRIVATE_PATH, SORT_ORDER } from "@/src/utils/constant";
-import { formatDateUTC } from "@/src/utils/graphql/common-service";
+import { PRIVATE_PATH, SORT_ORDER } from "@/utils/constant";
+import { formatDateUTC } from "@/utils/graphql/common-service";
 import { ChevronsUpDown } from "lucide-react";
 import TableRow from "./table-row";
 import NoResourceFound from "../ui/no-resource-found";
 import SearchSection from "../ui/search";
 import { useCallback, useState } from "react";
-import { DEFAULT_PAGINATION, GetPaymentHistoryResponse, paginationType } from "@/src/types/billing";
-import { getPaymentHistoryAction } from "@/src/utils/graphql/billing/action";
-import { debounce } from "@/src/utils/common-service";
+import { DEFAULT_PAGINATION, GetPaymentHistoryResponse, paginationType } from "@/types/billing";
+import { getPaymentHistoryAction } from "@/utils/graphql/billing/action";
+import { debounce } from "@/utils/common-service";
 import Pagination from "../ui/pagination";
 
 
