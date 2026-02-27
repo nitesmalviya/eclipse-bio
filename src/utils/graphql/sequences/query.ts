@@ -31,3 +31,23 @@ query GetRnaSequences($input: GetRnaSequencesInput) {
   }
 }
   `
+
+export const CREATE_RNA_SEQUENCE_MUTATION: DocumentNode = gql`
+  mutation CreateRnaSequence($input: CreateRnaSequenceInput!) {
+  createRnaSequence(input: $input) {
+    message
+    success
+    data {
+      annotations {
+        id
+        created_at
+        active_status
+      }
+      created_at
+      active_status
+      description
+      name
+      rna_type
+    }
+  }
+} `

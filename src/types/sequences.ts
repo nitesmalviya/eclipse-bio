@@ -80,3 +80,35 @@ export const DEFAULT_PAGINATION: paginationType = {
   limit: PAGINATION_LIMIT.LIMIT,
   search: "",
 };
+
+// Create rna squence type
+export interface CreateRnaSequenceInput {
+  description: string;
+  name: string;
+  rna_type: string;
+  active_status: string;
+  annotations: string;
+}
+
+export interface CreateRnaSequenceData {
+  message: string;
+  success: boolean;
+  data: {
+    id?: string;
+    name: string;
+    description: string;
+    rna_type: string;
+    active_status: string;
+    created_at: string;
+    annotations: {
+      id: string;
+      created_at: string;
+      active_status: string;
+    }[];
+  };
+}
+
+export interface CreateRnaSequenceResponse {
+  createRnaSequence: CreateRnaSequenceData;
+}
+

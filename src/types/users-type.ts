@@ -14,12 +14,12 @@ export interface UserProfile {
   bio: string | null;
 
   role: string;
-//   permissions: string[]; 
-//   settings: Record<string, any>;
+  //   permissions: string[]; 
+  //   settings: Record<string, any>;
 
-//   notification_preferences: Record<string, any>;
+  //   notification_preferences: Record<string, any>;
 
-//   stripe_customer_id: string | null;
+  //   stripe_customer_id: string | null;
 
   last_login_at: string | null; // ISO date string
   last_login_ip: string | null;

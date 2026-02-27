@@ -10,6 +10,8 @@ import { SORT_ORDER } from "@/utils/constant";
 import TableRow from "./table-row";
 import NoResourceFound from "../ui/no-resource-found";
 import { ArrowUpRight, ChevronsUpDown } from "lucide-react";
+import AddRNASequenceModal from "./add-rna-sequence-modal";
+import { error } from "console";
 
 interface RnaSequenceProps {
     rnaSequences: GetSequencesResponse;
@@ -19,6 +21,8 @@ const RNALibrary = ({ rnaSequences }: RnaSequenceProps) => {
     const [pagination, setPagination] = useState<paginationType>(DEFAULT_PAGINATION);
     const [rnaSequenceData, setRnaSequenceData] = useState<GetSequencesResponse>(rnaSequences);
     const [loading, setLoading] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isValidateModalOpen, setIsValidateModalOpen] = useState(false);
 
     const fetchRnaSequences = async (paginate: paginationType) => {
         try {
@@ -52,12 +56,13 @@ const RNALibrary = ({ rnaSequences }: RnaSequenceProps) => {
         [pagination]
     );
 
-
     const handlePageChange = (page: number) => {
         const newPagination = { ...pagination, page };
         setPagination(newPagination);
         fetchRnaSequences(newPagination);
     }
+
+
 
     return (
         <div className="flex w-full min-h-screen bg-white font-titillium">
@@ -78,7 +83,9 @@ const RNALibrary = ({ rnaSequences }: RnaSequenceProps) => {
                             </div>
                             <div className="flex items-center gap-4">
                                 <div className="flex-1 sm:flex-none">
-                                    <button className="flex items-center justify-center gap-2 px-6 py-3 bg-[#009CA6] text-white rounded-lg hover:opacity-90 transition-opacity text-[16px] sm:text-[18px] font-semibold whitespace-nowrap">
+                                    <button
+                                        onClick={() => setIsModalOpen(true)}
+                                        className="flex items-center justify-center gap-2 px-6 py-3 bg-[#009CA6] text-white rounded-lg hover:opacity-90 transition-opacity text-[16px] sm:text-[18px] font-semibold whitespace-nowrap">
                                         <img className="w-[24px] h-[24px] hidden lg:block" alt="" src="/assets/svgs/document-upload-white.svg" />
                                         Add sequence
                                         <ArrowUpRight className="w-[20px] h-[20px] lg:hidden" />
@@ -193,6 +200,7 @@ const RNALibrary = ({ rnaSequences }: RnaSequenceProps) => {
                         </div>
                     </div>
                 </div>
+                 
             </div>
         </div>
     )

@@ -1,6 +1,6 @@
 import { gql, DocumentNode } from "@apollo/client";
 
- export const GET_EMERGE_PROJECTS_QUERY: DocumentNode = gql`
+export const GET_EMERGE_PROJECTS_QUERY: DocumentNode = gql`
   query Projects($filter: ProjectFilter) {
     projects(filter: $filter) {
       message

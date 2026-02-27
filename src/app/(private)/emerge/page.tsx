@@ -9,7 +9,7 @@ const EmergePage = async () => {
     const comparisons = await getEmergeComparisons({
         limit: DASHBOARD_ITEMS_LIMIT,
     });
-    
+
     return (
         <EmergeHome
             projects={projects?.data?.data || null}

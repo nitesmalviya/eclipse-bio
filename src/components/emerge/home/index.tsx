@@ -19,6 +19,7 @@ interface EMergeHomeComponentProps {
 }
 
 const EmergeHome = ({ projects, comparisons }: EMergeHomeComponentProps) => {
+    console.log(projects, "projects list")
     const [activeProjectTab, setActiveProjectTab] = useState(0);
     const [activeComparisonTab, setActiveComparisonTab] = useState(0);
 

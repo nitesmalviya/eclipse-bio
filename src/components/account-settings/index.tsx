@@ -1,15 +1,22 @@
 "use client";
-import { PRIVATE_PATH } from "@/utils/constant";
+import { PRIVATE_PATH, PUBLIC_PATH } from "@/utils/constant";
 import { ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import ProfileSection from "./profile-section";
-import { useAppSelector } from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { logout } from "@/store/reducers/auth-reducer";
+import ConfirmationModal from "../ui/confirmation-modal";
+import { toast } from "sonner";
 
 const AccountSettings = () => {
+    const router = useRouter();
+    const dispatch = useAppDispatch();
     const [confirmationModal, setConfirmationModal] = useState(false);
-    const user = useAppSelector((state) => state.auth.user ) ;
+    const user = useAppSelector((state) => state.auth.user);
 
+    
     const Setting_Page_Items = [
 
         {
@@ -37,6 +44,12 @@ const AccountSettings = () => {
             onClick: () => setConfirmationModal(true),
         },
     ];
+
+    const handleLogout = () => {
+        dispatch(logout());
+        toast.success("Logged out successfully");
+        router.push(PUBLIC_PATH.LOGIN);
+    };
 
     return (
         <div className="min-h-screen  bg-linear-to-br from-[#F9FBFB] via-[#F9FBFB] to-[#D9F2F4] py-8 px-4 sm:px-6 lg:px-8 w-full">
@@ -81,7 +94,16 @@ const AccountSettings = () => {
                     </div>
                 </div>
             </div>
-
+            <ConfirmationModal
+                description="Please confirm if you want to sign out of your account."
+                title="Sign Out Confirmation"
+                isOpen={confirmationModal}
+                variant="warning"
+                onConfirm={handleLogout}
+                onClose={() => {
+                    setConfirmationModal(false);
+                }}
+            />
         </div>
     )
 }

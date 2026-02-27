@@ -1,8 +1,8 @@
 
 "use server";
-import { fetchGraphQLQuery } from "../..";
-import { GET_RNA_SEQUENCES_QUERY } from "./query";
-import { GetSequencesResponse, GetSequencesInput } from "@/types/sequences";
+import { fetchGraphQLMutation, fetchGraphQLQuery } from "../..";
+import { CREATE_RNA_SEQUENCE_MUTATION, GET_RNA_SEQUENCES_QUERY } from "./query";
+import { GetSequencesResponse, GetSequencesInput, CreateRnaSequenceInput, CreateRnaSequenceResponse } from "@/types/sequences";
 
 
 export const getSequencesAction = async (input: GetSequencesInput) => {
@@ -18,4 +18,16 @@ export const getSequencesAction = async (input: GetSequencesInput) => {
         console.error("Error fetching payment history:", error);
         throw error;
     }
+};
+
+export const createRnaSequenceAction = async ({
+    variables,
+}: {
+    variables: { input: CreateRnaSequenceInput };
+}) => {
+    const res = await fetchGraphQLMutation<CreateRnaSequenceResponse>(
+        CREATE_RNA_SEQUENCE_MUTATION,
+        variables,
+    );
+    return res as CreateRnaSequenceResponse;
 };

@@ -3,6 +3,7 @@
 import { PRIVATE_PATH } from "@/utils/constant";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 interface SidebarProps {
   readonly isOpen: boolean;
@@ -11,6 +12,7 @@ interface SidebarProps {
 
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const pathname = usePathname();
+  const [confirmationModal, setConfirmationModal] = useState(false);
 
   const menuItems = [
     { icon: "/assets/images/home-2.png", label: "Home", href: PRIVATE_PATH.ECOMPASS_HOME },
