@@ -39,4 +39,5 @@ export interface CreateContactUsData {
 // ===============================
 export interface CreateContactUsResponse {
   contactUs: CreateContactUsData;
+  message:string;
 }

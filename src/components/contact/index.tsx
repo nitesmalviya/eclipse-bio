@@ -44,8 +44,6 @@ const Contact = () => {
                         input: formData,
                     }
                 });
-
-
                 if (res?.contactUs?.success) {
                     toast.success(res.contactUs.message || "Message sent successfully!");
                     setFormData(defaultFormData);
@@ -98,7 +96,10 @@ const Contact = () => {
                         <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#166470] mb-2">We'd love to hear from you!</h2>
                         <p className="text-sm sm:text-base text-[#525F69]">Our team is here to help.</p>
                     </div>
-                    <form className="space-y-6" onSubmit={handleSubmit}>
+                    <form
+                        className="space-y-6"
+                        onSubmit={handleSubmit}
+                        autoComplete="off">
                         <div>
                             <label htmlFor="first_name" className="block text-sm font-semibold text-[#009CA6] mb-2">First Name</label>
                             <input

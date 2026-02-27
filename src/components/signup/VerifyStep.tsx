@@ -26,7 +26,7 @@ function EmailVerify({ email, password }: Props) {
     const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
     const [, forceUpdate] = useState(0);
     const [resendLoading, setResendLoading] = useState(false);
-    const [loading, setLoading] = useState();
+    const [loading, setLoading] = useState(false);
 
     const validatorRef = useRef(
         new SimpleReactValidator({
@@ -76,6 +76,7 @@ function EmailVerify({ email, password }: Props) {
         for (let i = 0; i < pastedData.length && i < 6; i++) {
             newCode[i] = pastedData[i];
         }
+
         setCode(newCode);
 
         // Focus the next empty input or the last one
@@ -205,11 +206,11 @@ function EmailVerify({ email, password }: Props) {
                                             onKeyDown={(e) => handleKeyDown(index, e)}
                                             onPaste={index === 0 ? handlePaste : undefined}
                                             className={`w-[45px] h-[45px]   sm:w-[60px] sm:h-[60px]
-  text-center text-[20px] sm:text-[24px] font-semibold
-  text-[#166470] rounded-lg transition-all
-  focus:outline-none focus:ring-2 focus:ring-[#009CA6]
-  ${digit ? "border-2 border-[#009CA6]" : "border border-[#98B4BC]"}
-`}
+                                                text-center text-[20px] sm:text-[24px] font-semibold
+                                                text-[#166470] rounded-lg transition-all
+                                                focus:outline-none focus:ring-2 focus:ring-[#009CA6]
+                                                ${digit ? "border-2 border-[#009CA6]" : "border border-[#98B4BC]"}
+                                            `}
                                             autoFocus={index === 0}
                                         />
                                     ))}

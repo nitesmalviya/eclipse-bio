@@ -168,6 +168,7 @@ const Login = () => {
                                         </label>
                                         <div className="relative">
                                             <input
+                                                type={showPassword ? "text" : "password"}
                                                 value={form.password}
                                                 onChange={handleChange}
                                                 autoComplete="new-password"

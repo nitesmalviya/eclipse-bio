@@ -19,18 +19,16 @@ type Props = {
 
 const SignupStep = ({ setStep, form, setForm }: Props) => {
     const dispatch = useAppDispatch();
-
     const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-    const [forceUpdate, setForceUpdate] = useState(0);
-
+    const [, forceUpdate] = useState(0);
     const validatorRef = useRef(
         new SimpleReactValidator({
             className: "text-[13px] sm:text-[14px] font-semibold text-[#F4364C] mt-1",
         }),
     );
-    const validator = validatorRef.current;
 
+    const validator = validatorRef.current;
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setForm({
             ...form,
@@ -40,39 +38,23 @@ const SignupStep = ({ setStep, form, setForm }: Props) => {
 
     const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-   debugger;
-
         if (validator.allValid()) {
             setLoading(true);
-            try {
-                const res = await dispatch(signup(form)) as { success: boolean; message: string };
-             
-                if (res?.success) {
-                    toast.success(res?.message);
-                    setStep(2)
-                } else {
-                    toast.error(res?.message);
-                }
-            } catch (error) {
-                console.log(error, "Something went wron")
-            } finally {
-                setLoading(false);
+            let res = await signup(form);
+            debugger
+            if (res?.success) {
+                toast.success(res?.message);
+                setStep(2)
+            } else {
+                toast.error(res?.message);
             }
-
         } else {
             validator.showMessages();
-            setForceUpdate((prev) => prev + 1);
+            forceUpdate((prev) => prev + 1);
         }
-
-
     }
-
-
-
-
     return (
         <div className="min-h-screen  bg-linear-to-br from-[#F9FBFB] via-[#F9FBFB] to-[#D9F2F4]">
-            {/* Header */}
             <header className="flex items-center justify-between w-full h-[80px] sm:h-[100px] p-[16px] sm:p-[24px] sm:pl-[100px] sm:pr-8 mx-auto bg-white/80 border border-white">
                 <div className="flex items-center">
                     <Image
@@ -85,10 +67,8 @@ const SignupStep = ({ setStep, form, setForm }: Props) => {
                     Contact Us
                 </button>
             </header>
-            {/* Main Content */}
             <main className="flex items-center justify-center py-8 sm:pt-20 sm:pb-10 px-4">
                 <div className="bg-white flex flex-col sm:flex-row overflow-hidden w-full max-w-[1240px]  rounded-3xl shadow-[0px_4px_50px_0px_rgba(84,110,116,0.08)]">
-                    {/* Left Side - Video (Hidden on mobile, shown on desktop) */}
                     <div className="relative w-full sm:max-w-[620px] h-[200px] sm:h-[600px] hidden sm:block">
                         <video
                             autoPlay
@@ -109,8 +89,6 @@ const SignupStep = ({ setStep, form, setForm }: Props) => {
                             }}
                         />
                     </div>
-
-                    {/* Mobile Video/Image - Shown only on mobile */}
                     <div className="relative w-full h-[220px] sm:hidden overflow-hidden rounded-t-3xl">
                         <video
                             autoPlay
@@ -122,8 +100,6 @@ const SignupStep = ({ setStep, form, setForm }: Props) => {
                             <source src="/assets/videos/molecula-.mp4" type="video/mp4" />
                         </video>
                     </div>
-
-                    {/* Right Side - Signup Form */}
                     <div className="flex flex-col justify-center px-10 py-8  sm:py-12 items-center w-full ">
                         <div className="flex flex-col w-full sm:w-[420px] max-w-full">
                             <div className="mb-6 sm:mb-10">
@@ -134,7 +110,6 @@ const SignupStep = ({ setStep, form, setForm }: Props) => {
                                     Welcome to eCOMPASS - Let's create your account
                                 </p>
                             </div>
-
                             <form
                                 className="flex flex-col gap-6 sm:gap-8"
                                 autoComplete="off"
@@ -150,7 +125,6 @@ const SignupStep = ({ setStep, form, setForm }: Props) => {
                                     <input
                                         value={form.first_name}
                                         onChange={handleChange}
-                                        autoComplete="first_name"
                                         id="first_name"
                                         name="first_name"
                                         type="text"
@@ -170,7 +144,6 @@ const SignupStep = ({ setStep, form, setForm }: Props) => {
                                     <input
                                         value={form.last_name}
                                         onChange={handleChange}
-                                        autoComplete="last_name"
                                         id="last_name"
                                         name="last_name"
                                         type="text"
@@ -178,9 +151,7 @@ const SignupStep = ({ setStep, form, setForm }: Props) => {
                                         placeholder="Last name"
                                     />
                                     {validator.message("last_name", form.last_name, "required|min:2|max:50")}
-
                                 </div>
-                                {/* Email Field */}
                                 <div className="relative shadow-[0_4px_50px_0_#546E7414]">
                                     <label
                                         htmlFor="email"
@@ -211,7 +182,6 @@ const SignupStep = ({ setStep, form, setForm }: Props) => {
                                     <input
                                         value={form.department}
                                         onChange={handleChange}
-                                        autoComplete="department"
                                         id="department"
                                         name="department"
                                         type="text"
@@ -221,8 +191,6 @@ const SignupStep = ({ setStep, form, setForm }: Props) => {
                                     {validator.message("department", form.department, "required|min:2|max:50")}
 
                                 </div>
-
-                                {/* Password Field */}
                                 <div className="relative shadow-[0_4px_50px_0_#546E7414]">
                                     <div>
                                         <label
@@ -257,19 +225,8 @@ const SignupStep = ({ setStep, form, setForm }: Props) => {
                                         ) : (
                                             <Eye className="h-5 w-5 text-[#009ca2]" />
                                         )}
-
                                     </button>
-
                                 </div>
-
-                                {/* Terms and conditions note */}
-                                <div className="text-center mt-1">
-                                    <p className="text-[12px] sm:text-[13px] text-[#525F69]">
-                                        By signing up, you agree to our Terms of Service and Privacy Policy
-                                    </p>
-                                </div>
-
-                                {/* Continue Button */}
                                 <button
                                     disabled={loading}
                                     type="submit"
@@ -282,13 +239,11 @@ const SignupStep = ({ setStep, form, setForm }: Props) => {
                                         <MoveUpRight className="w-[20px] sm:w-[24px]" />
                                     )}
                                 </button>
-
-
                             </form>
                         </div>
                     </div>
                 </div>
-            </main >
+            </main>
         </div>
     );
 };
