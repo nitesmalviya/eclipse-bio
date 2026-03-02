@@ -85,7 +85,6 @@ const NewProjectModal: React.FC<NewProjectModalProps> = ({
             comparison.
           </p>
         </div>
-
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-full flex items-center justify-center font-titillium font-bold text-sm bg-[#009ca6] text-white">1</div>
@@ -97,9 +96,7 @@ const NewProjectModal: React.FC<NewProjectModalProps> = ({
             <span className="font-titillium text-sm font-semibold text-[#525f69]">Milestones</span>
           </div>
         </div>
-
         {/* Title Input */}
-
         <div className="w-full flex flex-col gap-4">
           <label
             htmlFor="title-input"
@@ -116,10 +113,8 @@ const NewProjectModal: React.FC<NewProjectModalProps> = ({
               name="identifier"
               className="w-full border-none bg-transparent outline-none font-titillium font-semibold text-base text-[#525f69] placeholder:text-[#95a3ab] placeholder:font-normal"
               placeholder="Enter identifier"
-
             />
           </div>
-
         </div>
         <div className="w-full flex flex-col gap-4">
           <label
@@ -137,10 +132,8 @@ const NewProjectModal: React.FC<NewProjectModalProps> = ({
               name="description"
               className="w-full border-none bg-transparent outline-none font-titillium font-semibold text-base text-[#525f69] placeholder:text-[#95a3ab] placeholder:font-normal"
               placeholder="Enter project description"
-
             />
           </div>
-
         </div>
         {/* Date Range Selection */}
         <div className="w-full flex flex-col sm:flex-row gap-6 sm:gap-4">
@@ -168,16 +161,13 @@ const NewProjectModal: React.FC<NewProjectModalProps> = ({
                   id="start-date"
                   className="w-full border-none bg-transparent outline-none font-titillium font-semibold text-base text-[#525f69] placeholder:text-[#95a3ab] cursor-pointer"
                   placeholder="MM/DD/YYYY"
-
                   readOnly
                 />
               </div>
               {showStartCalendar && (
                 <div className="absolute top-[calc(100%+8px)] left-0 z-100">
                   <Calendar
-
                     onDateSelect={(date) => {
-
                       setShowStartCalendar(false);
                       validator.showMessageFor("startDate");
                       forceUpdate((prev) => prev + 1);
@@ -191,7 +181,6 @@ const NewProjectModal: React.FC<NewProjectModalProps> = ({
                 </div>
               )}
             </div>
-
           </div>
           <div className="flex-1 flex flex-col gap-4 relative">
             <label
@@ -217,7 +206,6 @@ const NewProjectModal: React.FC<NewProjectModalProps> = ({
                   id="end-date"
                   className="w-full border-none bg-transparent outline-none font-titillium font-semibold text-base text-[#525f69] placeholder:text-[#95a3ab] cursor-pointer"
                   placeholder="MM/DD/YYYY"
-
                   readOnly
                 />
               </div>
@@ -240,7 +228,6 @@ const NewProjectModal: React.FC<NewProjectModalProps> = ({
                 </div>
               )}
             </div>
-
           </div>
         </div>
 
@@ -258,11 +245,7 @@ const NewProjectModal: React.FC<NewProjectModalProps> = ({
                 Projects
               </span>
               <div className="flex flex-wrap gap-2 items-center">
-
-                <div
-
-                  className="inline-flex items-center gap-2 pl-3 pr-2 py-1.5 bg-[#f0f2f4]/80 border border-[#d5dadd] rounded-lg font-titillium font-semibold text-[13px] text-[#525f69]"
-                >
+                <div  className="inline-flex items-center gap-2 pl-3 pr-2 py-1.5 bg-[#f0f2f4]/80 border border-[#d5dadd] rounded-lg font-titillium font-semibold text-[13px] text-[#525f69]">
                   <span>
                     jh
                   </span>
@@ -308,13 +291,9 @@ const NewProjectModal: React.FC<NewProjectModalProps> = ({
             </div>
 
             <div className="  absolute top-[calc(100%+4px)] left-0 right-0 bg-white rounded-lg shadow-lg h-[250px] overflow-y-auto z-100 border border-[#f0f2f4] custom-scrollbar">
-
-
               <div
-
                 className="px-4 py-3 flex items-center gap-3 cursor-pointer hover:bg-[#009ca6]/5 border-b last:border-0 border-[#f0f2f4]"
                 onClick={() => {
-
                   validator.showMessageFor("projects");
                   forceUpdate((prev) => prev + 1);
                 }}
@@ -322,7 +301,6 @@ const NewProjectModal: React.FC<NewProjectModalProps> = ({
                 <div
                   className={`w-5 h-5 border-2 rounded flex items-center justify-center transition-all "bg-[#009ca6] border-[#009ca6]" : "border-[#d5dadd] bg-white"}`}
                 >
-
                   <Image
                     src="/assets/svgs/select.svg"
                     alt="✓"
@@ -330,31 +308,22 @@ const NewProjectModal: React.FC<NewProjectModalProps> = ({
                     height={11}
                     className="invert brightness-0"
                   />
-
                 </div>
-                <span
-                  className={`font-titillium text-[15px] "text-[#009ca6] font-semibold" : "text-[#525f69]"}`}
-                >
+                <span className={`font-titillium text-[15px] "text-[#009ca6] font-semibold" : "text-[#525f69]"}`}>
                   gffh
                 </span>
-
                 <div className="p-8 text-center text-[#95a3ab]">
                   No projects found
                 </div>
-
               </div>
-
             </div>
-
           </div>
 
           <div className="w-full flex flex-col gap-4">
             <label
               htmlFor="title-input"
-              className="font-titillium font-bold text-xl text-[#166470]"
-            >
+              className="font-titillium font-bold text-xl text-[#166470]">
               Project Owners
-
             </label>
             <div className="w-full bg-white border-b-2 border-[#009ca6] px-4 py-2.5 flex flex-col gap-1 focus-within:bg-[#009ca6]/[0.02]">
               <span className="font-titillium text-[13px] font-bold text-[#009ca6] uppercase">
@@ -365,10 +334,8 @@ const NewProjectModal: React.FC<NewProjectModalProps> = ({
                 name="owners"
                 className="w-full border-none bg-transparent outline-none font-titillium font-semibold text-base text-[#525f69] placeholder:text-[#95a3ab] placeholder:font-normal"
                 placeholder="Enter project owners"
-
               />
             </div>
-
           </div>
           <div className="w-full flex flex-col gap-4">
             <label
@@ -376,7 +343,6 @@ const NewProjectModal: React.FC<NewProjectModalProps> = ({
               className="font-titillium font-bold text-xl text-[#166470]"
             >
               Project Viewers
-
             </label>
             <div className="w-full bg-white border-b-2 border-[#009ca6] px-4 py-2.5 flex flex-col gap-1 focus-within:bg-[#009ca6]/[0.02]">
               <span className="font-titillium text-[13px] font-bold text-[#009ca6] uppercase">
@@ -387,13 +353,10 @@ const NewProjectModal: React.FC<NewProjectModalProps> = ({
                 name="viewers"
                 className="w-full border-none bg-transparent outline-none font-titillium font-semibold text-base text-[#525f69] placeholder:text-[#95a3ab] placeholder:font-normal"
                 placeholder="Enter project viewers"
-
               />
             </div>
 
           </div>
-
-
 
           {/* Footer Actions */}
           <div className="w-full flex justify-end">
@@ -419,10 +382,7 @@ const NewProjectModal: React.FC<NewProjectModalProps> = ({
             </button>
           </div>
         </div>
-
-
       </div>
-
     </div>
   );
 };
