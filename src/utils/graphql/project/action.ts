@@ -1,8 +1,8 @@
 "use server";
 
-import { CreateProjectInput, CreateProjectResponse } from "@/types/project";
+import { CreateProjectInput, CreateProjectResponse, ProjectsInput, ProjectsResponse } from "@/types/project";
 import { fetchGraphQLMutation } from "../../";
-import { CREATE_PROJECT_MUTATION } from "./query";
+import { CREATE_PROJECT_MUTATION, GET_PROJECTS_QUERY } from "./query";
 
 export const createProjectAction = async ({
   variables,
@@ -14,4 +14,18 @@ export const createProjectAction = async ({
     variables,
   );
   return res as CreateProjectResponse;
+};
+
+
+// get all everse projects action
+export const getProjectsAction = async ({
+  variables,
+}: {
+  variables: { filter: ProjectsInput };
+}): Promise<ProjectsResponse> => {
+  const res = await fetchGraphQLMutation<ProjectsResponse>(
+    GET_PROJECTS_QUERY,
+    variables,
+  );
+  return res as ProjectsResponse;
 };

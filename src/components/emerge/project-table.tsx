@@ -72,7 +72,7 @@ const ProjectTable = ({
     ? "grid-cols-[1fr_2fr_1fr_1.5fr_2fr_auto]"
     : "grid-cols-[2fr_1fr_1.5fr_2fr_auto]";
 
-     
+
 
   return (
     <div className="w-full bg-white overflow-x-auto">
@@ -151,9 +151,9 @@ const ProjectTable = ({
                 -{" "}
                 {project?.target_end_date
                   ? formatDateUTC(
-                      project.actual_end_date || project.target_end_date,
-                      "DD/MM/YYYY",
-                    )
+                    project.actual_end_date || project.target_end_date,
+                    "DD/MM/YYYY",
+                  )
                   : "--"}
               </div>
               {/* Status */}

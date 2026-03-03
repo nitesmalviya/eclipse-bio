@@ -15,3 +15,27 @@ export const CREATE_PROJECT_MUTATION: DocumentNode = gql`
     }
   }
 `;
+
+//projects query
+export const GET_PROJECTS_QUERY: DocumentNode = gql`
+  query Projects($filter: ProjectFilter) {
+    projects(filter: $filter) {
+      message
+      success
+      data {
+        id
+        name
+        active_status
+        identifier
+        start_date
+        status
+        progress_percentage
+        target_end_date
+        actual_end_date
+        owner {
+          display_name
+        }
+      }
+    }
+  }
+`;
