@@ -6,6 +6,14 @@ import SimpleReactValidator from "simple-react-validator";
 import { toast } from "sonner";
 import Loader from "../ui/loader";
 
+interface ContactForm {
+    first_name: string;
+    last_name: string;
+    email: string;
+    subject: string;
+    message: string;
+}
+
 const defaultFormData = {
     first_name: "",
     last_name: "",
@@ -16,7 +24,7 @@ const defaultFormData = {
 
 const Contact = () => {
     const [loading, setLoading] = useState(false);
-    const [formData, setFormData] = useState(defaultFormData);
+    const [formData, setFormData] = useState<ContactForm>(defaultFormData);
     const [_, forceUpdate] = useState(0); // Forcing re-render for validator    
 
     const validatorRef = useRef(
@@ -70,7 +78,8 @@ const Contact = () => {
             <div className="w-full  mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 <div className="flex flex-col gap-6 text-center lg:text-left">
                     <div>
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-semibold text-[#009CA6] leading-tight mb-4">Contact Us</h1><p class="text-base sm:text-lg text-[#525F69] leading-relaxed max-w-xl mx-auto lg:mx-0">Not sure what you need? The team at Eclipsebio will be happy to listen to you and suggest solutions you hadn't considered.</p>
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] font-semibold text-[#009CA6] leading-tight mb-4">Contact Us</h1>
+                        <p className="text-base sm:text-lg text-[#525F69] leading-relaxed max-w-xl mx-auto lg:mx-0">Not sure what you need? The team at Eclipsebio will be happy to listen to you and suggest solutions you hadn't considered.</p>
                     </div>
                     <div className="flex flex-col gap-4 mt-4 items-center lg:items-start">
                         <div className="flex items-center gap-3 text-[#525F69]">
@@ -110,7 +119,7 @@ const Contact = () => {
                                 className="w-full border-b-2 border-[#009ca2] text-base sm:text-lg text-[#525F69] pb-2 outline-none"
                                 placeholder="First Name"
                             />
-                            {validator.message("first_name", formData.first_name, "required|min:5")}
+                            {validator.message("first_name", formData.first_name, "required|min:2")}
                         </div>
                         <div>
                             <label htmlFor="last_name" className="block text-sm font-semibold text-[#009CA6] mb-2">Last Name</label>

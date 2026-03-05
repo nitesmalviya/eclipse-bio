@@ -77,7 +77,7 @@ const NewComparisonModal: React.FC<NewComparisonModalProps> = ({
     setLoading((prev) => ({ ...prev, projects: true }));
     try {
       const res = await getEmergeProjects({ search: query });
-      console.log(res, "Response")
+
       if (res.success) {
         setProjectList(res?.data?.data || []);
       }

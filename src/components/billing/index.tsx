@@ -46,10 +46,10 @@ const Billing = ({ paymentHistory }: BillingProps) => {
             const newPagination = { ...pagination, page: pagination.page || 1, search: search };
             setPagination(newPagination);
             fetchPaymentHistoryData(newPagination);
-         }, 500),
+        }, 500),
         []
     );
- 
+
     const handlePageChange = (page: number) => {
         const newPagination = { ...pagination, page };
         setPagination(newPagination);

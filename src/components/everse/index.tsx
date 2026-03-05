@@ -2,7 +2,6 @@ import HeroSection from "./hero-section";
 import ProjectCards from "./Project-cards";
 
 const EverseHome = ({ projectsData }: any) => {
-    console.log(projectsData, "All projects data")
     return (
         <div className="w-full">
             <HeroSection />

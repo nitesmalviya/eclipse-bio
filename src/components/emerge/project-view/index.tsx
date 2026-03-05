@@ -68,10 +68,7 @@ const EMergeProjectView = ({
 
          // Handle add project
       const handleAddProject = async (newProject: any) => {
-        console.log("New Project Data:", newProject);
-        debugger;
         setIsModalOpen(false);
-        
       };
 
     return (
