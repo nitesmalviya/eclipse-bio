@@ -1,4 +1,6 @@
-const ProjectCards = () => {
+
+const ProjectCards = ({ projectsData }: any) => {
+    
     const projectsList = [
         {
             id: 1,
@@ -130,7 +132,7 @@ const ProjectCards = () => {
                             ))
                         }
 
-                       
+
                     </div>
                 </div>
             </div>
