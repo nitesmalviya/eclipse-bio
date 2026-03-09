@@ -1,62 +1,23 @@
 "use client";
-import { useState, useRef } from "react";
-import { Loader2 } from "lucide-react";
-import SimpleReactValidator from "simple-react-validator";
-import { useRouter } from "next/navigation";
-import { login } from "@/store/actions/auth-action";
+import { useState } from "react";
 import Image from "next/image";
 import BrandLogo from "../../../public/assets/images/app-logo.png"
-import { useAppDispatch } from "../../store/hooks";
-import { PRIVATE_PATH } from "@/utils/constant";
-import { toast } from "sonner";
-import { SignInInput } from "@/types/auth-type";
+import { ForgetPasswordForm } from "@/types/auth-type";
+import EmailForm from "./email-form";
+import EmailVerify from "./email-verify";
+import NewPassword from "./new-password";
+import PasswordSuccessPage from "./password-reset-success";
 
-const defaultForm = {
+const defaultForm: ForgetPasswordForm = {
     email: "",
-    password: ""
-}
+    new_password: "",
+    confirm_password: "",
+    reset_token: "",
+};
 
 const ForgotPassword = () => {
-    const router = useRouter();
-    const dispatch = useAppDispatch();
-    const [form, setForm] = useState<SignInInput>(defaultForm);
-    const [loading, setLoading] = useState(false);
-    const [forceUpdate, setForceUpdate] = useState(0);
-
-    const validatorRef = useRef(
-        new SimpleReactValidator({
-            className: "text-[13px] sm:text-[14px] font-semibold text-[#F4364C] mt-1",
-        }),
-    );
-    const validator = validatorRef.current;
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value
-        })
-    }
-
-    const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-
-        if (validator.allValid()) {
-            setLoading(true);
-            const res = await dispatch(
-                login({ email: form.email, password: form.password }),
-            );
-            if (res?.success) {
-                toast.success(res?.message);
-                router.replace(PRIVATE_PATH.ECOMPASS_HOME)
-            } else {
-                toast.error(res?.message);
-            }
-            setLoading(false);
-        } else {
-            validator.showMessages();
-            setForceUpdate((prev) => prev + 1);
-        }
-    }
+    const [form, setForm] = useState<ForgetPasswordForm>(defaultForm);
+    const [step, setStep] = useState(1);
 
     return (
         <div className="min-h-screen   bg-linear-to-br from-[#F9FBFB] via-[#F9FBFB] to-[#D9F2F4]">
@@ -111,65 +72,22 @@ const ForgotPassword = () => {
                         </video>
                     </div>
 
-                    {/* Right Side - Login Form */}
-                    <div className="flex flex-col justify-center px-6 py-8  sm:py-0 items-center w-full ">
-                        <div className="flex flex-col w-full sm:w-[420px] max-w-full">
-                            <div className="mb-6 sm:mb-10">
-                                <h2 className="font-semibold mb-2 sm:mb-3 text-[24px] sm:text-[32px] leading-[100%] text-[#166470]">
-                                    Forgot password
-
-                                </h2>
-                                <p className="text-[14px] sm:text-[15px] leading-[140%] text-[#525F69]">
-                                    Enter the email associated with your account
-                                </p>
-                            </div>
-
-                            <form
-                                className="flex flex-col gap-6 sm:gap-8"
-                                autoComplete="off"
-                                onSubmit={handleSignIn}
-                            >
-                                {/* Email Field */}
-                                <div className="relative shadow-[0_4px_50px_0_#546E7414]">
-                                    <label
-                                        htmlFor="email"
-                                        className={`block text-[13px] sm:text-[14px] font-semibold leading-5 px-0 sm:px-4 mb-2 text-[#009CA6]`}
-                                    >
-                                        Email
-                                    </label>
-                                    <input
-                                        value={form.email}
-                                        onChange={handleChange}
-                                        autoComplete="email"
-                                        id="email"
-                                        name="email"
-                                        type="email"
-                                        className="w-full bg-transparent border-b-2 border-[#009ca2] text-[16px] sm:text-[18px] text-[#525F69] focus:ring-0 focus:border-[#009ca2] p-0 pb-2 placeholder:text-[#B0B0B0] outline-none transition-colors px-0 sm:px-4"
-                                        placeholder="Email"
-                                    />
-                                    {validator.message("email", form.email, "required|email")}
-
-                                </div>
+                    {step === 1 && (
+                        <EmailForm form={form} setForm={setForm} setStep={setStep} />
+                    )}
+                    {step === 2 && (
+                        <EmailVerify form={form} setForm={setForm} setStep={setStep} />
+                    )}
+                    {step === 3 && (
+                        <NewPassword form={form} setForm={setForm} setStep={setStep} />
+                    )}
+                    {step === 4 && (
+                        <PasswordSuccessPage />
+                    )}
 
 
-
-                                {/* Sign In Button */}
-                                <button
-
-                                    type="submit"
-                                    className={`w-full text-white text-[18px] sm:text-[20px] font-bold hover:opacity-90 transition-all flex items-center justify-center gap-2 bg-[#009CA6] py-3 sm:py-3.5 rounded-lg mt-3 
-                                        ${loading ? "opacity-50 cursor-not-allowed disabled" : ""}`}
-                                >
-                                    {loading ? (<Loader2 className="h-5 w-5 animate-spin text-white" />) : null}
-                                    Send code
-
-                                </button>
-
-                            </form>
-                        </div>
-                    </div>
                 </div>
-            </main >
+            </main>
         </div>
     );
 };
