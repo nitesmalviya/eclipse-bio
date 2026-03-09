@@ -1,7 +1,7 @@
 import { forgetPassword } from "@/store/actions/auth-action";
 import { ForgetPasswordProps } from "@/types/auth-type";
 import { MoveUpRight } from "lucide-react";
-import { ClipboardEvent, KeyboardEvent, useRef, useState } from "react";
+import { ClipboardEvent, FormEvent, KeyboardEvent, useRef, useState } from "react";
 import SimpleReactValidator from "simple-react-validator";
 import { toast } from "sonner";
 import Loader from "../ui/loader";
