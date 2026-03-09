@@ -10,8 +10,6 @@ import { SORT_ORDER } from "@/utils/constant";
 import TableRow from "./table-row";
 import NoResourceFound from "../ui/no-resource-found";
 import { ArrowUpRight, ChevronsUpDown } from "lucide-react";
-import AddRNASequenceModal from "./add-rna-sequence-modal";
-import { error } from "console";
 
 interface RnaSequenceProps {
     rnaSequences: GetSequencesResponse;
@@ -200,7 +198,7 @@ const RNALibrary = ({ rnaSequences }: RnaSequenceProps) => {
                         </div>
                     </div>
                 </div>
-                 
+
             </div>
         </div>
     )

@@ -1,6 +1,6 @@
 
 const ProjectCards = ({ projectsData }: any) => {
-    
+
     const projectsList = [
         {
             id: 1,
